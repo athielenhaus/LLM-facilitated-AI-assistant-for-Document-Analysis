@@ -1,0 +1,14 @@
+AccChecker REQUIREMENTS
+
+- can display criterion name
+- can display criterion text in a box
+- can import documents
+- can embed documents
+- can retrieve documents based on prompt
+- can display retrieved documents in a box below criterion
+- can display suggested response in a third box
+
+In case of issues with module recognition:
+- try running streamlit with the following command: python -m streamlit run app.py rather than streamlit run app.py
+- possibly try modifying python path: export PYTHONPATH="${PYTHONPATH}:/your/project/"
+- see discussion here: https://github.com/streamlit/streamlit/issues/1780
