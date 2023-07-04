@@ -20,7 +20,7 @@ def display_results(pdf_doc):
 
 def execute_embedding(fact_container):
     with st.spinner("Processing"):
-        # st.session_state.vector_store = get_vectorstore(st.session_state.text_chunks)
+        st.session_state.vector_store = get_vectorstore(st.session_state.text_chunks)
         fact_container.write("Embedding completed!")
 
 
@@ -88,8 +88,8 @@ def acc_check():
             price_container = fact_container.container()                        # this will hold the calculated embedding price
             price_container.write(st.session_state.price)
 
-            embed_button = fact_container.button("**Embed text as vectors**", on_click=execute_embedding(fact_container))   # this button will launch embedding
-
+            # create button to launch embedding - do NOT pass session_state arguments to function --> automatically triggers button whenever session state changes
+            embed_button = fact_container.button("**Embed text as vectors**", on_click=execute_embedding, args=(fact_container,))
 
 
     st.sidebar.header('PDF Import')
@@ -97,12 +97,18 @@ def acc_check():
         # st.subheader("Your documents")
         pdf_doc = st.file_uploader(
             "Upload a PDF here and click on 'Process'", accept_multiple_files=False)
-        process_txt_button = st.button("Process", on_click=display_results(pdf_doc))
+        process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
 
 
 
 
     with AccCheckTab:
+
+        st.header("Automated document analysis")
+        '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **relevant text snippets** retrieved from the documents 
+        \n- **suggested conclusions**.'''
+        'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
+        acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
         for c in criteria:
             crit_cont = st.expander(f"**{c['name']}**")
             for s in c["subcriteria"]:
@@ -116,15 +122,15 @@ def acc_check():
         if add_button:
             with st.spinner("Processing"):
                 st.session_state.counter += 1
-                counter_cont.write("point added!")
-                st.balloons()
-                st.info("Useful info")
-                st.warning('This is a warning', icon="⚠️")
-                st.success('This is a success message!', icon="✅")
-                e = RuntimeError('This is an exception of type RuntimeError')
-                st.exception(e)
-                st.snow()
-                st.write("hello")
+                # counter_cont.write("point added!")
+                # st.balloons()
+                # st.info("Useful info")
+                # st.warning('This is a warning', icon="⚠️")
+                # st.success('This is a success message!', icon="✅")
+                # e = RuntimeError('This is an exception of type RuntimeError')
+                # st.exception(e)
+                # st.snow()
+                # st.write("hello")
 
     with SessionStateTab:
         st.write(st.session_state)
