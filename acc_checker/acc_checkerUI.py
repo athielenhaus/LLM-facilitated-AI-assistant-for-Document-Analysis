@@ -124,6 +124,7 @@ def acc_check():
                 e = RuntimeError('This is an exception of type RuntimeError')
                 st.exception(e)
                 st.snow()
+                st.write("hello")
 
     with SessionStateTab:
         st.write(st.session_state)
