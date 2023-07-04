@@ -13,7 +13,12 @@
             {
               "position": 1,
               "name": "Absatz 1",
-              "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen."
+              "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen.",
+              "prompt": {
+                "query": "Was ist das Ziel des Studiengangs und welcher Abschluss wird von der Hochschule für diesen Studiengang vergeben? z.B. Bachelor of Science, Master of Arts, Bachelor of Engineering",
+                "text_example": "§ 2 Ziel des Studiums, akademischer Grad (1) 1Im Bachelorstudium sollen die wissenschaftlichen Grundlagen und die Methodenkompetenz der Fachwissenschaften vermittelt werden. 2Ziel des Studiums ist die Fähigkeit, einen konsekutiven Masterstudiengang erfolgreich absolvieren zu können sowie das erworbene Wissen berufsfeldbezogen anwenden zu können. (2) 1Aufgrund der bestandenen Bachelorprüfung wird der akademische Grad „Bachelor of Science (B.Sc.)“ für den Bachelorstudiengang Informatik verliehen.",
+                "answer_example": "Für den Bachelorstudiengang Informatik wird der Grad „Bachelor of Science (B.Sc.)“ verliehen. Ziel des Studiums ist die Fähigkeit, einen konsekutiven Masterstudiengang erfolgreich absolvieren zu können sowie das erworbene Wissen berufsfeldbezogen anwenden zu können."
+              }
             },
             {
               "position": 2,
