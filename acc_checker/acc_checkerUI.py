@@ -168,8 +168,8 @@ def acc_check():
     with TestTab:
         counter_cont = st.container()
         counter_cont.write(st.session_state.counter)
-        json_object = json.dumps(dictionary, indent=4)
-        st.download_button("Download criteria as JSON", st.session_state.criteria, file_name="test.json", mime=None)
+        json_object = json.dumps(st.session_state.criteria, indent=4, ensure_ascii=False)
+        st.download_button("Download criteria as JSON", json_object, file_name="test.json")
         add_button = st.button("Add one")
 
         if add_button:
