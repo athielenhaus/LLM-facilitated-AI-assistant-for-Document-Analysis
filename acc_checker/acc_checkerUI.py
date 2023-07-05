@@ -25,11 +25,13 @@ def execute_embedding(fact_container):
 
 
 def save_crit_to_dict(count, subcount, txt_key, prpt_key):
-    # st.session_state.crit_content = [count, subcount, txt_key]
-    st.session_state.crit_content = st.session_state[prpt_key]
-    subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
-    subcriterion['text'] = txt_key
-    subcriterion['prompt'] = prpt_key
+    st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
+    # st.session_state.crit_content = st.session_state[prpt_key]
+    # subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
+    st.session_state.criteria[count]["subcriteria"][subcount]['text']= st.session_state[txt_key]
+    st.session_state.criteria[count]["subcriteria"][subcount]['prompt'] = st.session_state[prpt_key]
+    # subcriterion['text'] = st.session_state[txt_key]
+    # subcriterion['prompt'] = st.session_state[prpt_key]
 
 
 def acc_check():
