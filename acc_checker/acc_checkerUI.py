@@ -3,6 +3,7 @@ from functions import load_json, create_sub_crit_layout, create_crit_mgmt_layout
 from vector_prep.text_prep import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from vector_prep.embedder import get_vectorstore
 from dotenv import load_dotenv
+import json
 
 
 
@@ -24,14 +25,25 @@ def execute_embedding(fact_container):
         fact_container.write("Embedding completed!")
 
 
+def import_criteria():
+    # file_path = os.path.join("..", 'criteria_sets.json')
+    file_path = 'criteria_sets_simple.json'
+    criteria_sets = load_json(file_path)
+    st.session_state.criteria = criteria_sets['criteria_sets'][0]['criteria']
+    return st.session_state.criteria
+
+
 def save_crit_to_dict(count, subcount, txt_key, prpt_key):
-    st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
-    # st.session_state.crit_content = st.session_state[prpt_key]
-    # subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
-    st.session_state.criteria[count]["subcriteria"][subcount]['text']= st.session_state[txt_key]
-    st.session_state.criteria[count]["subcriteria"][subcount]['prompt'] = st.session_state[prpt_key]
-    # subcriterion['text'] = st.session_state[txt_key]
-    # subcriterion['prompt'] = st.session_state[prpt_key]
+    # st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
+    subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
+    subcriterion['text'] = st.session_state[txt_key]
+    subcriterion['prompt'] = st.session_state[prpt_key]
+
+def add_subcrit_to_dict(count):
+    # st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
+    subcrit_list = st.session_state.criteria[count]["subcriteria"]
+    empty_subcrit_dict = {"subcriterion_nr": len(subcrit_list)+1, "name":"", "text":"", "prompt":""}
+    subcrit_list.append(empty_subcrit_dict)
 
 
 def acc_check():
@@ -65,11 +77,6 @@ def acc_check():
     # st.markdown('<p class="crit-font">Hello World !!</p>', unsafe_allow_html=True)
 
     TextInspectTab, AccCheckTab, CritMgmtTab, SessionStateTab, TestTab = st.tabs(["Text Inspection", "AccCheck", "Criteria Manager", "Session State", "Testing"])
-
-    # file_path = os.path.join("..", 'criteria_sets.json')
-    file_path = 'criteria_sets_simple.json'
-    criteria_sets = load_json(file_path)
-    st.session_state.criteria = criteria_sets['criteria_sets'][0]['criteria']
 
 
     with TextInspectTab:
@@ -113,24 +120,20 @@ def acc_check():
         process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
 
 
-
-
     with AccCheckTab:
-
         st.header("Automated document analysis")
         '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **relevant text snippets** retrieved from the documents 
         \n- **suggested conclusions**.'''
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
         # acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
+        import_crit_button = st.button("Import criteria", on_click=import_criteria)
         for c in st.session_state.criteria:
             crit_expander = st.expander(f"**{c['name']}**")
             for s in c["subcriteria"]:
                 create_sub_crit_layout(crit_expander, s)
 
 
-
     with CritMgmtTab:
-
         # create expander for each criterion
         for count, crit in enumerate(st.session_state.criteria):
             crit_expander = st.expander(f"**{crit['name']}**")
@@ -145,6 +148,8 @@ def acc_check():
                 with form:
                     st.text_area(f'{subcrit["name"]} Text', subcrit["text"], key=txt_key)
                     st.text_area(f'{subcrit["name"]} Prompt', subcrit["prompt"], key=prpt_key)
+                    # button_col1, button_col2 = st.columns([2])
+                    # with button_col1:
                     crit_submit_button = st.form_submit_button("Save",
                                                                on_click=save_crit_to_dict,
                                                                kwargs={"count":count,
@@ -153,12 +158,18 @@ def acc_check():
                                                                        "prpt_key":prpt_key
                                                                        }
                                                                )
-
+                # with button_col2:
+            crit_add_button = crit_expander.button("Add subcriterion",
+                                                   on_click=add_subcrit_to_dict,
+                                                   kwargs={"count":count}
+                                                   )
 
 
     with TestTab:
         counter_cont = st.container()
         counter_cont.write(st.session_state.counter)
+        json_object = json.dumps(dictionary, indent=4)
+        st.download_button("Download criteria as JSON", st.session_state.criteria, file_name="test.json", mime=None)
         add_button = st.button("Add one")
 
         if add_button:
@@ -173,6 +184,7 @@ def acc_check():
                 # st.exception(e)
                 # st.snow()
                 # st.write("hello")
+
 
     with SessionStateTab:
         st.write(st.session_state)
