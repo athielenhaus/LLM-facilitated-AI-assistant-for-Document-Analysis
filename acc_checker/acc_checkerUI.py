@@ -1,5 +1,5 @@
 import streamlit as st
-from functions import load_json, create_sub_crit_layout
+from functions import load_json, create_sub_crit_layout, create_crit_mgmt_layout
 from vector_prep.text_prep import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from vector_prep.embedder import get_vectorstore
 from dotenv import load_dotenv
@@ -24,6 +24,13 @@ def execute_embedding(fact_container):
         fact_container.write("Embedding completed!")
 
 
+def save_crit_to_dict(count, subcount, txt_key, prpt_key):
+    # st.session_state.crit_content = [count, subcount, txt_key]
+    st.session_state.crit_content = st.session_state[prpt_key]
+    subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
+    subcriterion['text'] = txt_key
+    subcriterion['prompt'] = prpt_key
+
 
 def acc_check():
 
@@ -32,6 +39,8 @@ def acc_check():
     st.set_page_config(layout="wide")
     st.title("Welcome to AccChecker")
 
+    if "crit_content" not in st.session_state:
+        st.session_state.crit_content = None
     if "text_length" not in st.session_state:
         st.session_state.text_length = 0
     if "nr_tokens" not in st.session_state:
@@ -46,17 +55,19 @@ def acc_check():
         st.session_state.text_chunks = None
     if "counter" not in st.session_state:
         st.session_state.counter = 0
+    if "criteria" not in st.session_state:
+        st.session_state.criteria = None
 
 
     # markdown test
     # st.markdown('<p class="crit-font">Hello World !!</p>', unsafe_allow_html=True)
 
-    TextInspectTab, AccCheckTab, CritMgmtTab, SessionStateTab = st.tabs(["Text Inspection", "AccCheck", "Criteria Manager", "Session State"])
+    TextInspectTab, AccCheckTab, CritMgmtTab, SessionStateTab, TestTab = st.tabs(["Text Inspection", "AccCheck", "Criteria Manager", "Session State", "Testing"])
 
     # file_path = os.path.join("..", 'criteria_sets.json')
-    file_path = 'criteria_sets.json'
+    file_path = 'criteria_sets_simple.json'
     criteria_sets = load_json(file_path)
-    criteria = criteria_sets['criteria_sets'][0]['criteria']
+    st.session_state.criteria = criteria_sets['criteria_sets'][0]['criteria']
 
 
     with TextInspectTab:
@@ -108,13 +119,42 @@ def acc_check():
         '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **relevant text snippets** retrieved from the documents 
         \n- **suggested conclusions**.'''
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
-        acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
-        for c in criteria:
-            crit_cont = st.expander(f"**{c['name']}**")
+        # acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
+        for c in st.session_state.criteria:
+            crit_expander = st.expander(f"**{c['name']}**")
             for s in c["subcriteria"]:
-                create_sub_crit_layout(crit_cont, s)
+                create_sub_crit_layout(crit_expander, s)
+
+
 
     with CritMgmtTab:
+
+        # create expander for each criterion
+        for count, crit in enumerate(st.session_state.criteria):
+            crit_expander = st.expander(f"**{crit['name']}**")
+            crit_name = crit["name_short"]
+
+            # create form for each subcriterion
+            for subcount, subcrit in enumerate(crit["subcriteria"]):
+                key = f'{crit_name}_{subcrit["name"]}'
+                txt_key = f'{key}_txt'
+                prpt_key = f'{key}_prpt'
+                form = crit_expander.form(f'{key} form')
+                with form:
+                    st.text_area(f'{subcrit["name"]} Text', subcrit["text"], key=txt_key)
+                    st.text_area(f'{subcrit["name"]} Prompt', subcrit["prompt"], key=prpt_key)
+                    crit_submit_button = st.form_submit_button("Save",
+                                                               on_click=save_crit_to_dict,
+                                                               kwargs={"count":count,
+                                                                       "subcount":subcount,
+                                                                       "txt_key":txt_key,
+                                                                       "prpt_key":prpt_key
+                                                                       }
+                                                               )
+
+
+
+    with TestTab:
         counter_cont = st.container()
         counter_cont.write(st.session_state.counter)
         add_button = st.button("Add one")

@@ -1,16 +1,12 @@
 import io
 import re
+
 import tiktoken
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfpage import PDFPage
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from constants import PRICE_PER_1K_TOKENS
-
-from PyPDF2 import PdfReader
-
-
 
 
 def extract_text_by_page(file):
@@ -101,7 +97,7 @@ def get_nr_of_tokens_and_price(chunks, PRICE_PER_1K_TOKENS):
 
 class TextProcessor:
 
-    def __init__(self, file):
+    def __init__(self, file, PRICE_PER_1K_TOKENS):
 
         self.file = file
         self.cleaned_text = ""
@@ -109,6 +105,7 @@ class TextProcessor:
         self.text_length = 0
         self.nr_tokens = 0
         self.price = 0
+        self.token_price = PRICE_PER_1K_TOKENS
 
 
     def extract_text_by_page(self, file):
@@ -168,7 +165,7 @@ class TextProcessor:
 
 
     # get number of tokens which will be submitted for embedding as well as price
-    def get_nr_of_tokens_and_price(self, chunks, price_per_1k_tokens):
+    def get_nr_of_tokens_and_price(self, chunks, token_price):
         '''takes as arguments chunks created via previous function as well as price which can be researched on OpenAI website
         (https://openai.com/pricing)'''
 
@@ -179,5 +176,5 @@ class TextProcessor:
             chunk_tokens = enc.encode(chunk)
             nr_tokens += len(chunk_tokens)
 
-        price = round((nr_tokens / 1000) * price_per_1k_tokens, 4)
+        price = round((nr_tokens / 1000) * token_price, 4)
         return nr_tokens, price

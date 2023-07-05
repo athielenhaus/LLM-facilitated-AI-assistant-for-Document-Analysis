@@ -15,6 +15,16 @@ def create_sub_crit_layout(crit_container, subcriterion):
     crit_col2.text_area(f'{subcriterion["name"]} Suggested Response')
 
 
+def create_crit_mgmt_layout(crit_expander, subcriterion):
+    form = crit_expander.form(f'{subcriterion["name"]} form')
+    # with crit_container.form("my_form"):
+    with form:
+        st.text_area(f'{subcriterion["name"]} Text', subcriterion["text"])
+        st.text_area(f'{subcriterion["name"]} Prompt', subcriterion["prompt"])
+    # crit_expander.text_area(f'{subcriterion["name"]} Text', subcriterion["text"])
+    # crit_expander.text_area(f'{subcriterion["name"]} Prompt', subcriterion["prompt"])
+        crit_submit_button = st.form_submit_button("Save")
+
 # def display_results(pdf_doc):
 #     # take uploaded PDF, extract and clean text
 #     st.session_state.cleaned_text = return_clean_pdf_text(pdf_doc)

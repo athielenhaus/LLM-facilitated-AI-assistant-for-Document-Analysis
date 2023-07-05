@@ -12,53 +12,25 @@
           "position": 1,
           "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen. (2) 1Die Regelstudienzeiten für ein Vollzeitstudium betragen sechs, sieben oder acht Semester bei den Bachelorstudiengängen und vier, drei oder zwei Semester bei den Masterstudiengängen. 2 Im Bachelorstudium beträgt die Regelstudienzeit im Vollzeitstudium mindestens drei Jahre. 3Bei konsekutiven Studiengängen beträgt die Gesamtregelstudienzeit im Vollzeitstudium fünf Jahre (zehn Semester). 4Wenn das Landesrecht dies vorsieht, sind kürzere und längere Regelstudienzeiten bei entsprechender studienorganisatorischer Gestaltung ausnahmsweise möglich, um den Studierenden eine individuelle Lernbiografie, insbesondere durch Teilzeit-, Fern-, berufsbegleitendes oder duales Studium sowie berufspraktische Semester, zu ermöglichen. 5Abweichend von Satz 3 können in den künstlerischen Kernfächern an Kunstund Musikhochschulen nach näherer Bestimmung des Landesrechts konsekutive Bachelor- und Masterstudiengänge auch mit einer Gesamtregelstudienzeit von sechs Jahren eingerichtet werden. (3) Theologische Studiengänge, die für das Pfarramt, das Priesteramt und den Beruf der Pastoralreferentin oder des Pastoralreferenten qualifizieren („Theologisches Vollstudium“), müssen nicht gestuft sein und können eine Regelstudienzeit von zehn Semestern aufweisen.",
           "text_formatted": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen.  \n(2) 1Die Regelstudienzeiten für ein Vollzeitstudium betragen sechs, sieben oder acht Semester bei den Bachelorstudiengängen und vier, drei oder zwei Semester bei den Masterstudiengängen. 2 Im Bachelorstudium beträgt die Regelstudienzeit im Vollzeitstudium mindestens drei Jahre. 3Bei konsekutiven Studiengängen beträgt die Gesamtregelstudienzeit im Vollzeitstudium fünf Jahre (zehn Semester). 4Wenn das Landesrecht dies vorsieht, sind kürzere und längere Regelstudienzeiten bei entsprechender studienorganisatorischer Gestaltung ausnahmsweise möglich, um den Studierenden eine individuelle Lernbiografie, insbesondere durch Teilzeit-, Fern-, berufsbegleitendes oder duales Studium sowie berufspraktische Semester, zu ermöglichen. 5Abweichend von Satz 3 können in den künstlerischen Kernfächern an Kunstund Musikhochschulen nach näherer Bestimmung des Landesrechts konsekutive Bachelor- und Masterstudiengänge auch mit einer Gesamtregelstudienzeit von sechs Jahren eingerichtet werden.  \n(3) Theologische Studiengänge, die für das Pfarramt, das Priesteramt und den Beruf der Pastoralreferentin oder des Pastoralreferenten qualifizieren („Theologisches Vollstudium“), müssen nicht gestuft sein und können eine Regelstudienzeit von zehn Semestern aufweisen.",
-          "subcriteria": [
+          "subcriteria":
+          [
             {
               "subcriterion_nr": 1,
               "name": "Absatz 1",
               "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen.",
-              "prompt": {
-                "query": "Was ist das Ziel des Studiengangs und welcher Abschluss wird von der Hochschule für diesen Studiengang vergeben? z.B. Bachelor of Science, Master of Arts, Bachelor of Engineering",
-                "text_example": "§ 2 Ziel des Studiums, akademischer Grad (1) 1Im Bachelorstudium sollen die wissenschaftlichen Grundlagen und die Methodenkompetenz der Fachwissenschaften vermittelt werden. 2Ziel des Studiums ist die Fähigkeit, einen konsekutiven Masterstudiengang erfolgreich absolvieren zu können sowie das erworbene Wissen berufsfeldbezogen anwenden zu können. (2) 1Aufgrund der bestandenen Bachelorprüfung wird der akademische Grad „Bachelor of Science (B.Sc.)“ für den Bachelorstudiengang Informatik verliehen.",
-                "answer_example": "Für den Bachelorstudiengang Informatik wird der Grad „Bachelor of Science (B.Sc.)“ verliehen. Ziel des Studiums ist die Fähigkeit, einen konsekutiven Masterstudiengang erfolgreich absolvieren zu können sowie das erworbene Wissen berufsfeldbezogen anwenden zu können."
-              }
+              "prompt": "blablabla"
             },
             {
               "subcriterion_nr": 2,
               "name": "Absatz 2",
               "text": "(2) 1Die Regelstudienzeiten für ein Vollzeitstudium betragen sechs, sieben oder acht Semester bei den Bachelorstudiengängen und vier, drei oder zwei Semester bei den Masterstudiengängen. 2 Im Bachelorstudium beträgt die Regelstudienzeit im Vollzeitstudium mindestens drei Jahre. 3Bei konsekutiven Studiengängen beträgt die Gesamtregelstudienzeit im Vollzeitstudium fünf Jahre (zehn Semester). 4Wenn das Landesrecht dies vorsieht, sind kürzere und längere Regelstudienzeiten bei entsprechender studienorganisatorischer Gestaltung ausnahmsweise möglich, um den Studierenden eine individuelle Lernbiografie, insbesondere durch Teilzeit-, Fern-, berufsbegleitendes oder duales Studium sowie berufspraktische Semester, zu ermöglichen. 5Abweichend von Satz 3 können in den künstlerischen Kernfächern an Kunstund Musikhochschulen nach näherer Bestimmung des Landesrechts konsekutive Bachelor- und Masterstudiengänge auch mit einer Gesamtregelstudienzeit von sechs Jahren eingerichtet werden.",
-              "query": "Was ist die Regelstudienzeit für den Studiengang? z.B. 2 Semester, 6 Semester, 7 Semester",
-              "examples":
-              [
-                {
-                  "example_nr": 1,
-                  "example_text": "§ 3 Regelstudienzeit, Studienaufbau, Leistungspunkte (1) 1Der Studiengang nimmt teil am Programm „Studienmodelle individueller Geschwindigkeit“. 2Die Studierenden haben im Rahmen der dortigen Kapazitäten und Regelungen bis einschließlich drittem Fachsemester Zugang zu den Veranstaltungen des MINT-Kollegs Baden-Württemberg (im folgenden MINT-Kolleg). (2) 1Die Regelstudienzeit beträgt sechs Semester. 2Bei einer qualifizierten Teilnahme am MINT-Kolleg bleiben bei der Anrechnung auf die Regelstudienzeit bis zu zwei Semester unberücksichtigt. 3Die konkrete Anzahl der Semester richtet sich nach § 8 Absatz 2 Satz 3 bis 5. 4Eine qualifizierte Teilnahme liegt vor, wenn die Studierenden Veranstaltungen des MINT-Kollegs für die Dauer von mindestens einem Semester im Umfang von mindestens zwei Fachkursen (Gesamtworkload 10 Semesterwochenstunden) belegt hat. 5Das MINT-Kolleg stellt hierüber eine Bescheinigung aus.",
-                  "example_answer": "Die Regelstudienzeit beträgt sechs Semester. Bei einer qualifizierten Teilnahme am MINT-Kolleg bleiben bei der Anrechnung auf die Regelstudienzeit bis zu zwei Semester unberücksichtigt. Die konkrete Anzahl der Semester richtet sich nach § 8 Absatz 2 Satz 3 bis 5."
-                },
-                {
-                  "example_nr": 2,
-                  "example_text": "§ 2 Regelstudienzeit Die Kombinationsstudiengänge mit dem Kern- oder Zweitfach Evangelische Theologie haben eine Regelstudienzeit von 6 Semestern. § 3 Prüfungsausschuss Für die Prüfungsangelegenheiten des Bachelorstudiums im Fach Evangelische Theologie ist der Prüfungsausschuss der Theologischen Fakultät zuständig.",
-                  "example_answer": "Mit einer Regelstudienzeit von 6 Semestern fällt der Studiengang innerhalb des vorgesehenen Rahmens für theologische Studiengänge. Das Kriterium ist daher erfüllt."
-                }
-              ]
+              "prompt": "Was ist die Regelstudienzeit für den Studiengang? z.B. 2 Semester, 6 Semester, 7 Semester"
             },
             {
               "subcriterion_nr": 3,
               "name": "Absatz 3",
               "text": "(3) Theologische Studiengänge, die für das Pfarramt, das Priesteramt und den Beruf der Pastoralreferentin oder des Pastoralreferenten qualifizieren („Theologisches Vollstudium“), müssen nicht gestuft sein und können eine Regelstudienzeit von zehn Semestern aufweisen.",
-              "query": "Handelt es sich um einen theologischen Studiengang? Wenn nein, antworte: 'Da es sich nicht um einen theologischen Studiengang handelt, ist Absatz 3 irrelevant'. Wenn ja, beschreibe inwiefern die Regelstudienzeit die maximale Grenze von 10 Semestern einhält",
-              "examples": [
-                {
-                  "example_nr": 1,
-                  "example_text": "§ 1 Geltungsbereich der Prüfungsordnung; Modulhandbuch und Studienverlaufsplan (1) Diese Prüfungsordnung (PO) regelt das Studium und die Prüfungen im Studiengang Erneuerbare Energien mit dem Abschlussgrad Bachelor of Engineering an der Fachhochschule Köln. (2) Auf der Grundlage dieser Prüfungsordnung erstellt die Fachhochschule Köln einen Studienverlaufsplan (Anhang 1) und ein Modulhandbuch. Das Modulhandbuch beschreibt Inhalt und Aufbau des Studiums unter Berücksichtigung der wissenschaftlichen und hochschuldidaktischen Entwicklung und der Anforderungen der beruflichen Praxis. Der Studienverlaufsplan dient als Empfehlung an die Studierenden für einen sachgerechten Aufbau des Studiums.",
-                  "example_answer": "Da es sich nicht um einen theologischen Studiengang handelt, ist Absatz 3 irrelevant"
-                },
-                {
-                  "example_nr": 2,
-                  "example_text": "§ 2 Regelstudienzeit Die Kombinationsstudiengänge mit dem Kern- oder Zweitfach Evangelische Theologie haben eine Regelstudienzeit von 6 Semestern. § 3 Prüfungsausschuss Für die Prüfungsangelegenheiten des Bachelorstudiums im Fach Evangelische Theologie ist der Prüfungsausschuss der Theologischen Fakultät zuständig.",
-                  "example_answer": "Mit einer Regelstudienzeit von 6 Semestern fällt der Studiengang innerhalb des vorgesehenen Rahmens für theologische Studiengänge. Das Kriterium ist daher erfüllt."
-                }
-              ]
+              "prompt": "Handelt es sich um einen theologischen Studiengang? Wenn nein, antworte: 'Da es sich nicht um einen theologischen Studiengang handelt, ist Absatz 3 irrelevant'. Wenn ja, beschreibe inwiefern die Regelstudienzeit die maximale Grenze von 10 Semestern einhält"
             }
           ]
         }
