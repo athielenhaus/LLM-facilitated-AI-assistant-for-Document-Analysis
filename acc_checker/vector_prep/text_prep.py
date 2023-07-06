@@ -8,7 +8,8 @@ from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfpage import PDFPage
 
-
+# NOTES: DOES IT MAKE SENSE TO USE LANGCHAIN DOC LOADERS FOR METADATA PURPOSES??
+# ONLY MAKES SENSE IF I CAN GET METADATA FROM PDFS, I.E. NEED TO CONVERT TO MARKDOWN FOR MarkdownHeaderSplitter.
 def extract_text_by_page(file):
     # with open(pdf_path, 'rb') as fh:
     for page in PDFPage.get_pages(file,
@@ -66,7 +67,8 @@ def get_text_chunks(text):
         # separator= "\n",
         chunk_size=1000,
         chunk_overlap=200,
-        length_function=len
+        length_function=len,
+        separators= ["\n\n", "\n", "(?<=\. )", " ", ""]  # third seperator is on periods at end of sentence
     )
     chunks = text_splitter.split_text(text)
 

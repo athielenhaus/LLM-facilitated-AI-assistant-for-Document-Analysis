@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import json
 
 
-
+# this function is activated by the "Processing" button in the sidebar
 def display_results(pdf_doc):
     with st.spinner("Processing"):
         if pdf_doc != None:
@@ -19,12 +19,15 @@ def display_results(pdf_doc):
         else:
             pass
 
+
+# this function is activated by the "Embed as vectors" button on the TextInspectTab
 def execute_embedding(fact_container):
     with st.spinner("Processing"):
         st.session_state.vector_store = get_vectorstore(st.session_state.text_chunks)
         fact_container.write("Embedding completed!")
 
 
+# this function is activated by the "Import criteria" button on the AccCheckTab
 def import_criteria():
     # file_path = os.path.join("..", 'criteria_sets.json')
     file_path = 'criteria_sets_simple.json'
@@ -33,12 +36,15 @@ def import_criteria():
     return st.session_state.criteria
 
 
+# this function is activated by the "save" button on the CritMgmtTab
 def save_crit_to_dict(count, subcount, txt_key, prpt_key):
     # st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
     subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
     subcriterion['text'] = st.session_state[txt_key]
     subcriterion['prompt'] = st.session_state[prpt_key]
 
+
+# this function is activated by the "Add subcriterion" button on the CritMgmtTab
 def add_subcrit_to_dict(count):
     # st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
     subcrit_list = st.session_state.criteria[count]["subcriteria"]
@@ -51,7 +57,7 @@ def acc_check():
     load_dotenv()       # needed for accessing OpenAI APIs
 
     st.set_page_config(layout="wide")
-    st.title("Welcome to AccChecker")
+    st.title("Welcome to AccCheck")
 
     if "crit_content" not in st.session_state:
         st.session_state.crit_content = None
@@ -122,15 +128,16 @@ def acc_check():
 
     with AccCheckTab:
         st.header("Automated document analysis")
-        '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **relevant text snippets** retrieved from the documents 
+        '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **related text snippets** retrieved from the documents 
         \n- **suggested conclusions**.'''
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
-        # acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
+        acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
         import_crit_button = st.button("Import criteria", on_click=import_criteria)
         for c in st.session_state.criteria:
             crit_expander = st.expander(f"**{c['name']}**")
             for s in c["subcriteria"]:
                 create_sub_crit_layout(crit_expander, s)
+
 
 
     with CritMgmtTab:
