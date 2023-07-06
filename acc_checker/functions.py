@@ -6,13 +6,18 @@ def load_json(file_path):
     criteria_sets = json.load(file)
     return criteria_sets
 
+
+# this function generates the layout in the AccCheckTab
 def create_sub_crit_layout(crit_container, subcriterion):
+    # def create_sub_crit_layout(crit_container, subcriterion, source_text, answer):
     crit_container.write(subcriterion["text"])
     crit_col1, crit_col2 = crit_container.columns(2)
 
     # note: for streamlit, each text area must have unique key
     crit_col1.text_area(f'{subcriterion["name"]} Retrieved Text')
     crit_col2.text_area(f'{subcriterion["name"]} Suggested Response')
+    # crit_col1.text_area(f'{subcriterion["name"]} Retrieved Text', source_text)
+    # crit_col2.text_area(f'{subcriterion["name"]} Suggested Response', answer)
 
 
 def create_crit_mgmt_layout(crit_expander, subcriterion):

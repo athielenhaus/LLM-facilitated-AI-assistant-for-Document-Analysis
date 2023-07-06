@@ -1,9 +1,6 @@
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
-from acc_checker.functions import load_json
-from acc_checker.vector_prep.embedder import get_vectorstore
-from acc_checker.vector_prep.text_prep import return_clean_pdf_text, get_text_chunks
 
 
 class AnalysisExecutor:
@@ -24,9 +21,11 @@ class AnalysisExecutor:
             return_source_documents=True)
         return retrieval_chain
 
+
     def get_llm_response_with_sources(self, retrieval_chain, prompt):
         response = retrieval_chain({"query": prompt})
         return response
+
 
     # source documents must be list containing <class 'langchain.schema.Document'> objects
     def combine_doc_strings(self, source_documents):
@@ -38,10 +37,12 @@ class AnalysisExecutor:
                 source_str += d.page_content
             return source_str
 
+
     def get_and_store_llm_response_and_source_docs(self, crit_dict, retrieval_chain):
         result = self.get_llm_response_with_sources(retrieval_chain, crit_dict["prompt"])
         crit_dict["response"] = result["result"]
         crit_dict["source"] = self.combine_doc_strings(result["source_documents"])
+
 
     # takes criteria set dict and langchain retrieval chain as arguments
     # returns list which is a version of the original criteria list, expanded to include LLM responses and retrieved source docs

@@ -3,13 +3,15 @@ from functions import load_json, create_sub_crit_layout, create_crit_mgmt_layout
 from vector_prep.text_prep import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from vector_prep.embedder import get_vectorstore
 from dotenv import load_dotenv
+from llm.retrieval_chain import AnalysisExecutor
 import json
 
 
-# this function is activated by the "Processing" button in the sidebar
+
+# this function is activated by the "Process" button in the sidebar
 def display_results(pdf_doc):
     with st.spinner("Processing"):
-        if pdf_doc != None:
+        if pdf_doc is not None:
             st.session_state.cleaned_text = return_clean_pdf_text(pdf_doc)                      # take uploaded PDF, extract and clean text
             st.session_state.text_length = len(st.session_state.cleaned_text)                   # obtain text length
             st.session_state.text_chunks = get_text_chunks(st.session_state.cleaned_text)       # break into text chunks for embedding
@@ -38,7 +40,6 @@ def import_criteria():
 
 # this function is activated by the "save" button on the CritMgmtTab
 def save_crit_to_dict(count, subcount, txt_key, prpt_key):
-    # st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
     subcriterion= st.session_state.criteria[count]["subcriteria"][subcount]
     subcriterion['text'] = st.session_state[txt_key]
     subcriterion['prompt'] = st.session_state[prpt_key]
@@ -50,6 +51,12 @@ def add_subcrit_to_dict(count):
     subcrit_list = st.session_state.criteria[count]["subcriteria"]
     empty_subcrit_dict = {"subcriterion_nr": len(subcrit_list)+1, "name":"", "text":"", "prompt":""}
     subcrit_list.append(empty_subcrit_dict)
+
+
+def run_analysis():
+    st.session_state.analyzer = AnalysisExecutor(st.session_state.vector_store)
+    st.session_state.answer_list = st.session_state.analyzer.answer_list
+
 
 
 def acc_check():
@@ -68,7 +75,7 @@ def acc_check():
     if "price" not in st.session_state:
         st.session_state.price = 0
     if "vector_store" not in st.session_state:
-        st.vector_store = None
+        st.session_state.vector_store = None
     if "cleaned_text" not in st.session_state:
         st.session_state.cleaned_text = ""
     if "text_chunks" not in st.session_state:
@@ -77,6 +84,10 @@ def acc_check():
         st.session_state.counter = 0
     if "criteria" not in st.session_state:
         st.session_state.criteria = None
+    if "analyzer" not in st.session_state:
+        st.session_state.analyzer = None
+    if "answer_list" not in st.session_state:
+        st.session_state.answer_list = None
 
 
     # markdown test
@@ -133,10 +144,14 @@ def acc_check():
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
         acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
         import_crit_button = st.button("Import criteria", on_click=import_criteria)
+
         for c in st.session_state.criteria:
             crit_expander = st.expander(f"**{c['name']}**")
-            for s in c["subcriteria"]:
-                create_sub_crit_layout(crit_expander, s)
+            if c["subcriteria"]:
+                for s in c["subcriteria"]:
+                    create_sub_crit_layout(crit_expander, s)
+            else:
+                create_sub_crit_layout(crit_expander, c)
 
 
 
