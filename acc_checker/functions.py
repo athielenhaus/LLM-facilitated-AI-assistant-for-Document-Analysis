@@ -40,7 +40,7 @@ def create_crit_mgmt_layout(crit_expander, subcriterion):
         crit_submit_button = st.form_submit_button("Save")
 
 # def display_results(pdf_doc):
-#     # take uploaded PDF, extract and clean text
+#     # take uploaded PDF, extract and clean text stuff
 #     st.session_state.cleaned_text = return_clean_pdf_text(pdf_doc)
 #
 #     # obtain text length
