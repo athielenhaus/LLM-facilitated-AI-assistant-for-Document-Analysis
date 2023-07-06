@@ -1,0 +1,48 @@
+{
+  "criteria_sets":
+  [
+    {
+      "name": "Akkreditierungsrat",
+      "description": "These are the criteria used by the German accreditation council",
+      "criteria":
+      [
+        {
+          "name": "§ 3 Studienstruktur und Studiendauer",
+          "name_short": "§ 3",
+          "position": 1,
+          "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen. (2) 1Die Regelstudienzeiten für ein Vollzeitstudium betragen sechs, sieben oder acht Semester bei den Bachelorstudiengängen und vier, drei oder zwei Semester bei den Masterstudiengängen. 2 Im Bachelorstudium beträgt die Regelstudienzeit im Vollzeitstudium mindestens drei Jahre. 3Bei konsekutiven Studiengängen beträgt die Gesamtregelstudienzeit im Vollzeitstudium fünf Jahre (zehn Semester). 4Wenn das Landesrecht dies vorsieht, sind kürzere und längere Regelstudienzeiten bei entsprechender studienorganisatorischer Gestaltung ausnahmsweise möglich, um den Studierenden eine individuelle Lernbiografie, insbesondere durch Teilzeit-, Fern-, berufsbegleitendes oder duales Studium sowie berufspraktische Semester, zu ermöglichen. 5Abweichend von Satz 3 können in den künstlerischen Kernfächern an Kunstund Musikhochschulen nach näherer Bestimmung des Landesrechts konsekutive Bachelor- und Masterstudiengänge auch mit einer Gesamtregelstudienzeit von sechs Jahren eingerichtet werden. (3) Theologische Studiengänge, die für das Pfarramt, das Priesteramt und den Beruf der Pastoralreferentin oder des Pastoralreferenten qualifizieren („Theologisches Vollstudium“), müssen nicht gestuft sein und können eine Regelstudienzeit von zehn Semestern aufweisen.",
+          "text_formatted": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen.  \n(2) 1Die Regelstudienzeiten für ein Vollzeitstudium betragen sechs, sieben oder acht Semester bei den Bachelorstudiengängen und vier, drei oder zwei Semester bei den Masterstudiengängen. 2 Im Bachelorstudium beträgt die Regelstudienzeit im Vollzeitstudium mindestens drei Jahre. 3Bei konsekutiven Studiengängen beträgt die Gesamtregelstudienzeit im Vollzeitstudium fünf Jahre (zehn Semester). 4Wenn das Landesrecht dies vorsieht, sind kürzere und längere Regelstudienzeiten bei entsprechender studienorganisatorischer Gestaltung ausnahmsweise möglich, um den Studierenden eine individuelle Lernbiografie, insbesondere durch Teilzeit-, Fern-, berufsbegleitendes oder duales Studium sowie berufspraktische Semester, zu ermöglichen. 5Abweichend von Satz 3 können in den künstlerischen Kernfächern an Kunstund Musikhochschulen nach näherer Bestimmung des Landesrechts konsekutive Bachelor- und Masterstudiengänge auch mit einer Gesamtregelstudienzeit von sechs Jahren eingerichtet werden.  \n(3) Theologische Studiengänge, die für das Pfarramt, das Priesteramt und den Beruf der Pastoralreferentin oder des Pastoralreferenten qualifizieren („Theologisches Vollstudium“), müssen nicht gestuft sein und können eine Regelstudienzeit von zehn Semestern aufweisen.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen.",
+              "prompt": "blablabla"
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) 1Die Regelstudienzeiten für ein Vollzeitstudium betragen sechs, sieben oder acht Semester bei den Bachelorstudiengängen und vier, drei oder zwei Semester bei den Masterstudiengängen. 2 Im Bachelorstudium beträgt die Regelstudienzeit im Vollzeitstudium mindestens drei Jahre. 3Bei konsekutiven Studiengängen beträgt die Gesamtregelstudienzeit im Vollzeitstudium fünf Jahre (zehn Semester). 4Wenn das Landesrecht dies vorsieht, sind kürzere und längere Regelstudienzeiten bei entsprechender studienorganisatorischer Gestaltung ausnahmsweise möglich, um den Studierenden eine individuelle Lernbiografie, insbesondere durch Teilzeit-, Fern-, berufsbegleitendes oder duales Studium sowie berufspraktische Semester, zu ermöglichen. 5Abweichend von Satz 3 können in den künstlerischen Kernfächern an Kunstund Musikhochschulen nach näherer Bestimmung des Landesrechts konsekutive Bachelor- und Masterstudiengänge auch mit einer Gesamtregelstudienzeit von sechs Jahren eingerichtet werden.",
+              "prompt": "Was ist die Regelstudienzeit für den Studiengang? z.B. 2 Semester, 6 Semester, 7 Semester"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "(3) Theologische Studiengänge, die für das Pfarramt, das Priesteramt und den Beruf der Pastoralreferentin oder des Pastoralreferenten qualifizieren („Theologisches Vollstudium“), müssen nicht gestuft sein und können eine Regelstudienzeit von zehn Semestern aufweisen.",
+              "prompt": "Handelt es sich um einen theologischen Studiengang? Wenn nein, antworte: 'Da es sich nicht um einen theologischen Studiengang handelt, ist Absatz 3 irrelevant'. Wenn ja, beschreibe inwiefern die Regelstudienzeit die maximale Grenze von 10 Semestern einhält"
+            }
+          ]
+        },
+        {
+          "name": "§ 15 Geschlechtergerechtigkeit und Nachteilsausgleich",
+          "name_short": "§ 15",
+          "position": 100,
+          "text": "Die Hochschule verfügt über Konzepte zur Geschlechtergerechtigkeit und zur Förderung der Chancengleichheit von Studierenden in besonderen Lebenslagen, die auf der Ebene des Studiengangs umgesetzt werden.",
+          "text_formatted": "Die Hochschule verfügt über Konzepte zur Geschlechtergerechtigkeit und zur Förderung der Chancengleichheit von Studierenden in besonderen Lebenslagen, die auf der Ebene des Studiengangs umgesetzt werden.",
+          "prompt": "Handelt es sich um einen theologischen Studiengang? Wenn nein, antworte: 'Da es sich nicht um einen theologischen Studiengang handelt, ist Absatz 3 irrelevant'. Wenn ja, beschreibe inwiefern die Regelstudienzeit die maximale Grenze von 10 Semestern einhält"
+        }
+      ]
+    }
+  ]
+}

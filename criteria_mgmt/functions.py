@@ -16,11 +16,11 @@ def connect_to_database():
 
 def save_criteria_set(db, crit_set_name, crit_set_description):
     crit_set = {"name": crit_set_name, "description": crit_set_description}
-    criteria_sets = db.criteria
+    criteria_sets = db.criteria_set
     criteria_sets.insert_one(crit_set)
 
 def import_criteria_set(db, crit_set_name):
-    criteria_sets = db.criteria
+    criteria_sets = db.criteria_set
     search_result = criteria_sets.find({"name": crit_set_name})
     crit_set = search_result[0]
     return crit_set

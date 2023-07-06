@@ -14,13 +14,13 @@ def db():
 
 def t_save_criteria_set(db):
     save_criteria_set(db, "a", "desc")
-    criteria_sets = db.criteria
+    criteria_sets = db.criteria_set
     search_result = criteria_sets.find({"name": "a", "description": "desc"})
     for result in search_result:
         assert (result["name"], result["description"]) == ("a", "desc")
 
 db = db()
-criteria_sets = db.criteria
+criteria_sets = db.criteria_set
 results = criteria_sets.find({})
 for result in results:
     print(result)
