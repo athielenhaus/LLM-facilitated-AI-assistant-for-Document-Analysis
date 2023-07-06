@@ -18,7 +18,7 @@
               "subcriterion_nr": 1,
               "name": "Absatz 1",
               "text": "(1) 1 Im System gestufter Studiengänge ist der Bachelorabschluss der erste berufsqualifizierende Regelabschluss eines Hochschulstudiums; der Masterabschluss stellt einen weiteren berufsqualifizierenden Hochschulabschluss dar. 2Grundständige Studiengänge, die unmittelbar zu einem Masterabschluss führen, sind mit Ausnahme der in Absatz 3 genannten Studiengänge ausgeschlossen.",
-              "prompt": "blablabla"
+              "prompt": "Welcher akademische Grad wird für den Studiengang vergeben? z.B. Bachelor of Science (B.Sc.), Master of Arts (M.A.), Bachelor of Engineering (B.Eng.)"
             },
             {
               "subcriterion_nr": 2,
@@ -40,7 +40,7 @@
           "position": 100,
           "text": "Die Hochschule verfügt über Konzepte zur Geschlechtergerechtigkeit und zur Förderung der Chancengleichheit von Studierenden in besonderen Lebenslagen, die auf der Ebene des Studiengangs umgesetzt werden.",
           "text_formatted": "Die Hochschule verfügt über Konzepte zur Geschlechtergerechtigkeit und zur Förderung der Chancengleichheit von Studierenden in besonderen Lebenslagen, die auf der Ebene des Studiengangs umgesetzt werden.",
-          "prompt": "Handelt es sich um einen theologischen Studiengang? Wenn nein, antworte: 'Da es sich nicht um einen theologischen Studiengang handelt, ist Absatz 3 irrelevant'. Wenn ja, beschreibe inwiefern die Regelstudienzeit die maximale Grenze von 10 Semestern einhält"
+          "prompt": "Welchen Nachteilsausgleich gibt es?"
         }
       ]
     }

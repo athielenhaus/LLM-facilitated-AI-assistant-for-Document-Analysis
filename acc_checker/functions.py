@@ -8,13 +8,16 @@ def load_json(file_path):
 
 
 # this function generates the layout in the AccCheckTab
-def create_crit_layout(crit_container, subcriterion):
-    crit_container.write(subcriterion["text"])
-    crit_col1, crit_col2 = crit_container.columns(2)
-
+def create_crit_layout(crit_container, crit_dict):
+    crit_container.write(crit_dict["text"])
+    crit_col1, crit_col2 = crit_container.columns([3, 2])
+    # if "response" in crit_dict:
+    #     retrieved_txt_def = crit_dict["response"]
+    retrieved_txt_def = "" if "source" not in crit_dict else crit_dict["source"]
+    sug_resp_def = "" if "response" not in crit_dict else crit_dict["response"]
     # note: for streamlit, each text area must have unique key
-    crit_col1.text_area(f'{subcriterion["name"]} Retrieved Text')
-    crit_col2.text_area(f'{subcriterion["name"]} Suggested Response')
+    crit_col1.text_area(f'{crit_dict["name"]} Retrieved Text', retrieved_txt_def, height=200)
+    crit_col2.text_area(f'{crit_dict["name"]} Suggested Response', sug_resp_def, height=200)
 
 def generate_crit_layout(criterion):
     crit_expander = st.expander(f"**{criterion['name']}**")
