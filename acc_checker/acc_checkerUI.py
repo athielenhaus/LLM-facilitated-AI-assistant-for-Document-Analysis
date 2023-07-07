@@ -1,5 +1,5 @@
 import streamlit as st
-from functions import load_json, generate_crit_layout, create_crit_mgmt_layout
+from functions import load_json, generate_crit_layout, generate_crit_mgmt_layout
 from vector_prep.text_prep import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from vector_prep.embedder import get_vectorstore
 from dotenv import load_dotenv
@@ -157,28 +157,29 @@ def acc_check():
 
     with CritMgmtTab:
         # create expander for each criterion
-        for count, crit in enumerate(st.session_state.criteria_set):
-            crit_expander = st.expander(f"**{crit['name']}**")
-            crit_name = crit["name_short"]
-
-            # create form for each subcriterion
-            if "subcriteria" in crit:
-                for subcount, subcrit in enumerate(crit["subcriteria"]):
-                    key = f'{crit_name}_{subcrit["name"]}'
-                    txt_key = f'{key}_txt'
-                    prpt_key = f'{key}_prpt'
-                    form = crit_expander.form(f'{key} form')
-                    with form:
-                        st.text_area(f'{subcrit["name"]} Text', subcrit["text"], key=txt_key)
-                        st.text_area(f'{subcrit["name"]} Prompt', subcrit["prompt"], key=prpt_key)
-                        crit_submit_button = st.form_submit_button("Save",
-                                                                   on_click=save_crit_to_dict,
-                                                                   kwargs={"count":count,
-                                                                           "subcount":subcount,
-                                                                           "txt_key":txt_key,
-                                                                           "prpt_key":prpt_key
-                                                                           }
-                                                                   )
+        for count, criterion in enumerate(st.session_state.criteria_set):
+            generate_crit_mgmt_layout(criterion, count)
+            # crit_expander = st.expander(f"**{crit['name']}**")
+            # crit_name = crit["name_short"]
+            #
+            # # create form for each subcriterion
+            # if "subcriteria" in crit:
+            #     for subcount, subcrit in enumerate(crit["subcriteria"]):
+            #         key = f'{crit_name}_{subcrit["name"]}'
+            #         txt_key = f'{key}_txt'
+            #         prpt_key = f'{key}_prpt'
+            #         form = crit_expander.form(f'{key} form')
+            #         with form:
+            #             st.text_area(f'{subcrit["name"]} Text', subcrit["text"], key=txt_key)
+            #             st.text_area(f'{subcrit["name"]} Prompt', subcrit["prompt"], key=prpt_key)
+            #             crit_submit_button = st.form_submit_button("Save",
+            #                                                        on_click=save_crit_to_dict,
+            #                                                        kwargs={"count":count,
+            #                                                                "subcount":subcount,
+            #                                                                "txt_key":txt_key,
+            #                                                                "prpt_key":prpt_key
+            #                                                                }
+            #                                                        )
 
                 # BUTTON FOR ADDING ADDITIONAL CRITERIA --> NICE-TO-HAVE
                 #     # with button_col2:

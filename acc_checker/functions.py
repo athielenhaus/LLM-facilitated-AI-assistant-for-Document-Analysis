@@ -11,13 +11,15 @@ def load_json(file_path):
 def create_crit_layout(crit_container, crit_dict):
     crit_container.write(crit_dict["text"])
     crit_col1, crit_col2 = crit_container.columns([3, 2])
-    # if "response" in crit_dict:
-    #     retrieved_txt_def = crit_dict["response"]
+
+    # set default values for text areas to blank if no source texts or responses are available yet
     retrieved_txt_def = "" if "source" not in crit_dict else crit_dict["source"]
     sug_resp_def = "" if "response" not in crit_dict else crit_dict["response"]
+
     # note: for streamlit, each text area must have unique key
     crit_col1.text_area(f'{crit_dict["name"]} Retrieved Text', retrieved_txt_def, height=200)
     crit_col2.text_area(f'{crit_dict["name"]} Suggested Response', sug_resp_def, height=200)
+
 
 def generate_crit_layout(criterion):
     crit_expander = st.expander(f"**{criterion['name']}**")
@@ -28,16 +30,49 @@ def generate_crit_layout(criterion):
         create_crit_layout(crit_expander, criterion)
 
 
+# saves criteria to dict, differentiating between criteria and subcriteria
+def save_crit_to_dict(count, subcount, txt_key, prpt_key):
+    if subcount is None:
+        criterion= st.session_state.criteria_set[count]
+        criterion['text'] = st.session_state[txt_key]
+        criterion['prompt'] = st.session_state[prpt_key]
+    else:
+        subcriterion = st.session_state.criteria_set[count]["subcriteria"][subcount]
+        subcriterion['text'] = st.session_state[txt_key]
+        subcriterion['prompt'] = st.session_state[prpt_key]
 
-def create_crit_mgmt_layout(crit_expander, subcriterion):
-    form = crit_expander.form(f'{subcriterion["name"]} form')
-    # with crit_container.form("my_form"):
-    with form:
-        st.text_area(f'{subcriterion["name"]} Text', subcriterion["text"])
-        st.text_area(f'{subcriterion["name"]} Prompt', subcriterion["prompt"])
-    # crit_expander.text_area(f'{subcriterion["name"]} Text', subcriterion["text"])
-    # crit_expander.text_area(f'{subcriterion["name"]} Prompt', subcriterion["prompt"])
-        crit_submit_button = st.form_submit_button("Save")
+
+# helper function for creating layout for CritMgmtTab
+def create_crit_mgmt_layout(expander, criterion, key, count, subcount=None):
+    txt_key = f'{key}_txt'
+    prpt_key = f'{key}_prpt'
+    crit_form = expander.form(f'{key} form')
+    with crit_form:
+        st.text_area(f'{criterion["name"]} Text', criterion["text"], key=txt_key)
+        st.text_area(f'{criterion["name"]} Prompt', criterion["prompt"], key=prpt_key)
+        crit_submit_button = st.form_submit_button("Save",
+                                                   on_click=save_crit_to_dict,
+                                                   kwargs={"count": count,
+                                                           "subcount": subcount,
+                                                           "txt_key": txt_key,
+                                                           "prpt_key": prpt_key
+                                                           }
+                                                   )
+
+# creates layout for CritMgmtTab
+def generate_crit_mgmt_layout(criterion, count):
+    crit_expander = st.expander(f"**{criterion['name']}**")
+    if "subcriteria" in criterion:
+        for subcount, subcriterion in enumerate(criterion["subcriteria"]):
+            key = f'{criterion["name_short"]} {subcriterion["name"]}'
+            create_crit_mgmt_layout(crit_expander, subcriterion, key, count, subcount)
+    else:
+        key = criterion["name_short"]
+        create_crit_mgmt_layout(crit_expander, criterion, key, count)
+
+
+
+
 
 # def display_results(pdf_doc):
 #     # take uploaded PDF, extract and clean text stuff
