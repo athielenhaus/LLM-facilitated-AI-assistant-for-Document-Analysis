@@ -12,6 +12,8 @@ def create_crit_layout(crit_container, crit_dict):
     crit_container.write(crit_dict["text"])
     crit_col1, crit_col2 = crit_container.columns([3, 2])
 
+    ##### MUST ADD SHORT NAME
+
     # set default values for text areas to blank if no source texts or responses are available yet
     retrieved_txt_def = "" if "source" not in crit_dict else crit_dict["source"]
     sug_resp_def = "" if "response" not in crit_dict else crit_dict["response"]
