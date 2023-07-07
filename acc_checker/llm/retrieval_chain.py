@@ -5,11 +5,13 @@ from langchain.chains import RetrievalQA
 
 class AnalysisExecutor:
 
+
     def __init__(self, criteria_set, vector_store):
         self.criteria_set = criteria_set
         self.vector_store = vector_store
         self.retrieval_chain = self.get_retrieval_chain(vector_store)
         self.answer_list = self.get_and_store_all_llm_responses_and_source_docs(criteria_set, self.retrieval_chain)
+
 
     def get_retrieval_chain(self, vector_store):
         llm = OpenAI(temperature=0.0)  # initialize LLM model

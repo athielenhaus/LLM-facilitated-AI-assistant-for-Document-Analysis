@@ -171,8 +171,6 @@ def acc_check():
                     with form:
                         st.text_area(f'{subcrit["name"]} Text', subcrit["text"], key=txt_key)
                         st.text_area(f'{subcrit["name"]} Prompt', subcrit["prompt"], key=prpt_key)
-                        # button_col1, button_col2 = st.columns([2])
-                        # with button_col1:
                         crit_submit_button = st.form_submit_button("Save",
                                                                    on_click=save_crit_to_dict,
                                                                    kwargs={"count":count,
@@ -181,11 +179,13 @@ def acc_check():
                                                                            "prpt_key":prpt_key
                                                                            }
                                                                    )
-                    # with button_col2:
-                crit_add_button = crit_expander.button("Add subcriterion",
-                                                       on_click=add_subcrit_to_dict,
-                                                       kwargs={"count":count}
-                                                       )
+
+                # BUTTON FOR ADDING ADDITIONAL CRITERIA --> NICE-TO-HAVE
+                #     # with button_col2:
+                # crit_add_button = crit_expander.button("Add subcriterion",
+                #                                        on_click=add_subcrit_to_dict,
+                #                                        kwargs={"count":count}
+                #                                        )
 
 
     with TestTab:
