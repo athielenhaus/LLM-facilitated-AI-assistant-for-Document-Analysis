@@ -38,12 +38,6 @@ def import_criteria_set():
     return st.session_state.criteria_set
 
 
-# this function is activated by the "save" button on the CritMgmtTab
-def save_crit_to_dict(count, subcount, txt_key, prpt_key):
-    subcriterion= st.session_state.criteria_set[count]["subcriteria"][subcount]
-    subcriterion['text'] = st.session_state[txt_key]
-    subcriterion['prompt'] = st.session_state[prpt_key]
-
 
 # this function is activated by the "Add subcriterion" button on the CritMgmtTab
 def add_subcrit_to_dict(count):
@@ -122,9 +116,9 @@ def acc_check():
             token_nr_container = fact_container.container()
             token_nr_container.write(st.session_state.nr_tokens)
 
-            # this holds the price
+            # this holds the calculated embedding price
             st.write("Est. embedding cost (USD):")
-            price_container = fact_container.container()                        # this will hold the calculated embedding price
+            price_container = fact_container.container()
             price_container.write(st.session_state.price)
 
             # create button to launch embedding - do NOT pass session_state arguments to function --> automatically triggers button whenever session state changes
@@ -159,27 +153,7 @@ def acc_check():
         # create expander for each criterion
         for count, criterion in enumerate(st.session_state.criteria_set):
             generate_crit_mgmt_layout(criterion, count)
-            # crit_expander = st.expander(f"**{crit['name']}**")
-            # crit_name = crit["name_short"]
-            #
-            # # create form for each subcriterion
-            # if "subcriteria" in crit:
-            #     for subcount, subcrit in enumerate(crit["subcriteria"]):
-            #         key = f'{crit_name}_{subcrit["name"]}'
-            #         txt_key = f'{key}_txt'
-            #         prpt_key = f'{key}_prpt'
-            #         form = crit_expander.form(f'{key} form')
-            #         with form:
-            #             st.text_area(f'{subcrit["name"]} Text', subcrit["text"], key=txt_key)
-            #             st.text_area(f'{subcrit["name"]} Prompt', subcrit["prompt"], key=prpt_key)
-            #             crit_submit_button = st.form_submit_button("Save",
-            #                                                        on_click=save_crit_to_dict,
-            #                                                        kwargs={"count":count,
-            #                                                                "subcount":subcount,
-            #                                                                "txt_key":txt_key,
-            #                                                                "prpt_key":prpt_key
-            #                                                                }
-            #                                                        )
+
 
                 # BUTTON FOR ADDING ADDITIONAL CRITERIA --> NICE-TO-HAVE
                 #     # with button_col2:

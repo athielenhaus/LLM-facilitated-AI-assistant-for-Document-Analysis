@@ -35,14 +35,239 @@
           ]
         },
         {
+          "name": "§ 4 Studiengangsprofile",
+          "name_short": "§ 4",
+          "position": 2,
+          "text": "(1) 1Masterstudiengänge können in „anwendungsorientierte“ und „forschungsorientierte“ unterschieden werden. 2Masterstudiengänge an Kunstund Musikhochschulen können ein besonderes künstlerisches Profil haben. 3Masterstudiengänge, in denen die Bildungsvoraussetzungen für ein Lehramt vermittelt werden, haben ein besonderes lehramtsbezogenes Profil. 4Das jeweilige Profil ist in der Akkreditierung festzustellen. (2) 1Bei der Einrichtung eines Masterstudiengangs ist festzulegen, ob er konsekutiv oder weiterbildend ist. 2Weiterbildende Masterstudiengänge entsprechen in den Vorgaben zur Regelstudienzeit und zur Abschlussarbeit den konsekutiven Masterstudiengängen und führen zu dem gleichen Qualifikationsniveau und zu denselben Berechtigungen. (3) Bachelor- und Masterstudiengänge sehen eine Abschlussarbeit vor, mit der die Fähigkeit nachgewiesen wird, innerhalb einer vorgegebenen Frist ein Problem aus dem jeweiligen Fach selbständig nach wissenschaftlichen bzw. künstlerischen Methoden zu bearbeiten.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1Masterstudiengänge können in „anwendungsorientierte“ und „forschungsorientierte“ unterschieden werden. 2Masterstudiengänge an Kunstund Musikhochschulen können ein besonderes künstlerisches Profil haben. 3Masterstudiengänge, in denen die Bildungsvoraussetzungen für ein Lehramt vermittelt werden, haben ein besonderes lehramtsbezogenes Profil. 4Das jeweilige Profil ist in der Akkreditierung festzustellen.",
+              "prompt": "Welche Art von Profil besitzt der Masterstudiengang? z.B. forschungsorientiert, anwendungsorientiert, künstlerisches Profil, lehramtsbezogenes Profil."
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) 1Bei der Einrichtung eines Masterstudiengangs ist festzulegen, ob er konsekutiv oder weiterbildend ist. 2Weiterbildende Masterstudiengänge entsprechen in den Vorgaben zur Regelstudienzeit und zur Abschlussarbeit den konsekutiven Masterstudiengängen und führen zu dem gleichen Qualifikationsniveau und zu denselben Berechtigungen.",
+              "prompt": "Ist der Masterstudiengang konsekutiv oder weiterbildend? Wenn ja, erläutere den Unterschied zwischen konsekutiven und weiterbildenden Masterstudiengängen in Bezug auf Regelstudienzeit und Abschlussarbeit"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "(3) Bachelor- und Masterstudiengänge sehen eine Abschlussarbeit vor, mit der die Fähigkeit nachgewiesen wird, innerhalb einer vorgegebenen Frist ein Problem aus dem jeweiligen Fach selbständig nach wissenschaftlichen bzw. künstlerischen Methoden zu bearbeiten.",
+              "prompt": "Was ist die Abschlussarbeit für Bachelor- und Masterstudiengänge? Wie beweist man mit dieser die Fähigkeit, innerhalb einer vorgegebenen Frist ein Problem aus dem jeweiligen Fach selbständig nach wissenschaftlichen bzw. künstlerischen Methoden zu bearbeiten?"
+            }
+          ]
+        },
+        {
+          "name": "§ 5 Zugangsvoraussetzungen und Übergänge zwischen Studienangeboten",
+          "name_short": "§ 5",
+          "position": 1,
+          "text": "(1) 1Zugangsvoraussetzung für einen Masterstudiengang ist ein erster berufsqualifizierender Hochschulabschluss. 2Bei weiterbildenden und künstlerischen Masterstudiengängen kann der berufsqualifizierende Hochschulabschluss durch eine Eingangsprüfung ersetzt werden, sofern Landesrecht dies vorsieht. 3Weiterbildende Masterstudiengänge setzen qualifizierte berufspraktische Erfahrung von in der Regel nicht unter einem Jahr voraus. (2) 1Als Zugangsvoraussetzung für künstlerische Masterstudiengänge ist die hierfür erforderliche besondere künstlerische Eignung nachzuweisen. 2Beim Zugang zu weiterbildenden künstlerischen Masterstudiengängen können auch berufspraktische Tätigkeiten, die während des Studiums abgeleistet werden, berücksichtigt werden, sofern Landesrecht dies ermöglicht. Das Erfordernis berufspraktischer Erfahrung gilt nicht an Kunsthochschulen für solche Studien, die einer Vertiefung freikünstlerischer Fähigkeiten dienen, sofern landesrechtliche Regelungen dies vorsehen. (3) Für den Zugang zu Masterstudiengängen können weitere Voraussetzungen entsprechend Landesrecht vorgesehen werden.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1Zugangsvoraussetzung für einen Masterstudiengang ist ein erster berufsqualifizierender Hochschulabschluss. 2Bei weiterbildenden und künstlerischen Masterstudiengängen kann der berufsqualifizierende Hochschulabschluss durch eine Eingangsprüfung ersetzt werden, sofern Landesrecht dies vorsieht. 3Weiterbildende Masterstudiengänge setzen qualifizierte berufspraktische Erfahrung von in der Regel nicht unter einem Jahr voraus.",
+              "prompt": "Welche Vorraussetzungen müssen erfüllt sein, um an dem Studiengang teilnehmen zu können? z.B. berufsqualifizierender Hochschulabschluss, qualifizierte berufspraktische Erfahrung"
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) 1Als Zugangsvoraussetzung für künstlerische Masterstudiengänge ist die hierfür erforderliche besondere künstlerische Eignung nachzuweisen. 2Beim Zugang zu weiterbildenden künstlerischen Masterstudiengängen können auch berufspraktische Tätigkeiten, die während des Studiums abgeleistet werden, berücksichtigt werden, sofern Landesrecht dies ermöglicht. Das Erfordernis berufspraktischer Erfahrung gilt nicht an Kunsthochschulen für solche Studien, die einer Vertiefung freikünstlerischer Fähigkeiten dienen, sofern landesrechtliche Regelungen dies vorsehen.",
+              "prompt": "Welche Qualifikationen können anerkannt werden, um Zugang zu einem Masterstudiengang zu erhalten? z.B. Eingangsprüfung, berufspraktische Tätigkeiten, besondere künstlerische Eignung"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "(3) Für den Zugang zu Masterstudiengängen können weitere Voraussetzungen entsprechend Landesrecht vorgesehen werden.",
+              "prompt": "Welche weiteren Voraussetzungen können für den Zugang zu einem Masterstudiengang erforderlich sein entsprechend Landesrecht? z.B. mindestalter, sprachkenntnisse, etc."
+            }
+          ]
+        },
+        {
+          "name": "§ 9 Besondere Kriterien für Kooperationen mit nichthochschulischen Einrichtungen",
+          "name_short": "§ 9",
+          "position": 2,
+          "text": "(1) 1Umfang und Art bestehender Kooperationen mit Unternehmen und sonstigen Einrichtungen sind unter Einbezug nichthochschulischer Lernorte und Studienanteile sowie der Unterrichtssprache(n) vertraglich geregelt und auf der Internetseite der Hochschule beschrieben. 2Bei der Anwendung von Anrechnungsmodellen im Rahmen von studiengangsbezogenen Kooperationen ist die inhaltliche Gleichwertigkeit anzurechnender nichthochschulischer Qualifikationen und deren Äquivalenz gemäß dem angestrebten Qualifikationsniveau nachvollziehbar dargelegt. (2) Im Fall von studiengangsbezogenen Kooperationen mit nichthochschulischen Einrichtungen ist der Mehrwert für die künftigen Studierenden und die gradverleihende Hochschule nachvollziehbar dargelegt.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1Umfang und Art bestehender Kooperationen mit Unternehmen und sonstigen Einrichtungen sind unter Einbezug nichthochschulischer Lernorte und Studienanteile sowie der Unterrichtssprache(n) vertraglich geregelt und auf der Internetseite der Hochschule beschrieben. 2Bei der Anwendung von Anrechnungsmodellen im Rahmen von studiengangsbezogenen Kooperationen ist die inhaltliche Gleichwertigkeit anzurechnender nichthochschulischer Qualifikationen und deren Äquivalenz gemäß dem angestrebten Qualifikationsniveau nachvollziehbar dargelegt.",
+              "prompt": "Welche Art von Kooperationen wird an der Hochschule angeboten? z.B. Duale Studiengänge, Flexible Studiengänge, Teilzeitstudiengänge, individuelle Lehrpläne, etc."
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) Im Fall von studiengangsbezogenen Kooperationen mit nichthochschulischen Einrichtungen ist der Mehrwert für die künftigen Studierenden und die gradverleihende Hochschule nachvollziehbar dargelegt.",
+              "prompt": "Beschreibe umfassend den Mehrwert für die künftigen Studierenden und die gradverleihende Hochschule durch die Kooperationen? z.B. verbesserte Praxiserfahrung, Kontakte mit Unternehmen, Zugang zu qualitativ hochwertigen Lehraufgaben, etc."
+            }
+          ]
+        },
+        {
+          "name": "§ 10 Sonderregelungen für Joint-Degree-Programme",
+          "name_short": "§ 10",
+          "position": 10,
+          "text": "(1) Ein Joint-Degree-Programm ist ein gestufter Studiengang, der von einer inländischen Hochschule gemeinsam mit einer oder mehreren Hochschulen ausländischer Staaten aus dem Europäischen Hochschulraum koordiniert und angeboten wird, zu einem gemeinsamen Abschluss führt und folgende weitere Merkmale aufweist: 1. Integriertes Curriculum,2. Studienanteil an einer oder mehreren ausländischen Hochschulen von in der Regel mindestens 25 Prozent,3. vertraglich geregelte Zusammenarbeit,4. abgestimmtes Zugangs- und Prüfungswesen und5. eine gemeinsame Qualitätssicherung. (2) 1Qualifikationen und Studienzeiten werden in Übereinstimmung mit dem Gesetz zu dem Übereinkommen vom 11. April 1997 über die Anerkennung von Qualifikationen im Hochschulbereich in der europäischen Region vom 16. Mai 2007 (BGBl. 2007 II S. 712, 713) (Lissabon-Konvention) anerkannt. 2Das ECTS wird entsprechend §§ 7 und 8 Absatz 1 angewendet und die Verteilung der Leistungspunkte ist geregelt. 3 Für den Bachelorabschluss sind 180 bis 240 Leistungspunkte nachzuweisen und für den Masterabschluss nicht weniger als 60 Leistungspunkte. 4Die wesentlichen Studieninformationen sind veröffentlicht und für die Studierenden jederzeit zugänglich. (3) . Wird ein Joint Degree-Programm von einer inländischen Hochschule gemeinsam mit einer oder mehreren Hochschulen ausländischer Staaten koordiniert und angeboten, die nicht dem Europäischen Hochschulraum angehören (außereuropäische Kooperationspartner), so finden auf Antrag der inländischen Hochschule die Absätze 1 und 2 entsprechende Anwendung, wenn sich die außereuropäischen Kooperationspartner in der Kooperationsvereinbarung mit der inländischen Hochschule zu einer Akkreditierung unter Anwendung der in den Absätzen 1 und 2 sowie in den §§ 16 Absatz 1 und 33 Absatz 1 geregelten Kriterien und Verfahrensregeln verpflichtet.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) Ein Joint-Degree-Programm ist ein gestufter Studiengang, der von einer inländischen Hochschule gemeinsam mit einer oder mehreren Hochschulen ausländischer Staaten aus dem Europäischen Hochschulraum koordiniert und angeboten wird, zu einem gemeinsamen Abschluss führt und folgende weitere Merkmale aufweist: 1. Integriertes Curriculum,2. Studienanteil an einer oder mehreren ausländischen Hochschulen von in der Regel mindestens 25 Prozent,3. vertraglich geregelte Zusammenarbeit,4. abgestimmtes Zugangs- und Prüfungswesen und5. eine gemeinsame Qualitätssicherung.",
+              "prompt": " Was sind die Merkmale des Joint-Degree-Programms? z.B. Ein integriertes Curriculum, Mindestens 25% des Studienanteils an einer ausländischen Hochschule"
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "2Das ECTS wird entsprechend §§ 7 und 8 Absatz 1 angewendet und die Verteilung der Leistungspunkte ist geregelt. 3 Für den Bachelorabschluss sind 180 bis 240 Leistungspunkte nachzuweisen und für den Masterabschluss nicht weniger als 60 Leistungspunkte. 4Die wesentlichen Studieninformationen sind veröffentlicht und für die Studierenden jederzeit zugänglich.",
+              "prompt": "Wie viele Leistungspunkte sind für den Bachelorabschluss und den Masterabschluss erforderlich?"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "Wird ein Joint Degree-Programm von einer inländischen Hochschule gemeinsam mit einer oder mehreren Hochschulen ausländischer Staaten koordiniert und angeboten, die nicht dem Europäischen Hochschulraum angehören (außereuropäische Kooperationspartner), so finden auf Antrag der inländischen Hochschule die Absätze 1 und 2 entsprechende Anwendung, wenn sich die außereuropäischen Kooperationspartner in der Kooperationsvereinbarung mit der inländischen Hochschule zu einer Akkreditierung unter Anwendung der in den Absätzen 1 und 2 sowie in den §§ 16 Absatz 1 und 33 Absatz 1 geregelten Kriterien und Verfahrensregeln verpflichtet.",
+              "prompt": "Welche Voraussetzungen müssen erfüllt sein, um ein Joint Degree-Programm anzubieten?"
+            }
+          ]
+        },
+        {
+          "name": "§ 11 Qualifikationsziele und Abschlussniveau",
+          "name_short": "§ 11",
+          "position": 3,
+          "text": "(1) 1Die Qualifikationsziele und die angestrebten Lernergebnisse sind klar formuliert und tragen den in Artikel 2 Absatz 3 Nummer 1 Studienakkreditierungsstaatsvertrag genannten Zielen von Hochschulbildung nachvollziehbar Rechnung. 2 Die Dimension Persönlichkeitsbildung umfasst auch die künftige zivilgesellschaftliche, politische und kulturelle Rolle der Absolventinnen und Absolventen. Die Studierenden sollen nach ihrem Abschluss in der Lage sein, gesellschaftliche Prozesse kritisch, reflektiert sowie mit Verantwortungsbewusstsein und in demokratischem Gemeinsinn maßgeblich mitzugestalten. (2) Die fachlichen und wissenschaftlichen/künstlerischen Anforderungen umfassen die Aspekte Wissen und Verstehen (Wissensverbreiterung, Wissensvertiefung und Wissensverständnis), Einsatz, Anwendung und Erzeugung von Wissen/Kunst (Nutzung und Transfer, wissenschaftliche Innovation), Kommunikation und Kooperation sowie wissenschaftliches/künstlerisches Selbstverständnis / Professionalität und sind stimmig im Hinblick auf das vermittelte Abschlussniveau. (3) 1Bachelorstudiengänge dienen der Vermittlung wissenschaftlicher Grundlagen, Methodenkompetenz und berufsfeldbezogener Qualifikationen und stellen eine breite wissenschaftliche Qualifizierung sicher. 2Konsekutive Masterstudiengänge sind als vertiefende, verbreiternde, fachübergreifende oder fachlich andere Studiengänge ausgestaltet. 3Weiterbildende Masterstudiengänge setzen qualifizierte berufspraktische Erfahrung von in der Regel nicht unter einem Jahr voraus. 4Das Studiengangskonzept weiterbildender Masterstudiengänge berücksichtigt die beruflichen Erfahrungen und knüpft zur Erreichung der Qualifikationsziele an diese an. 5Bei der Konzeption legt die Hochschule den Zusammenhang von beruflicher Qualifikation und Studienangebot sowie die Gleichwertigkeit der Anforderungen zu konsekutiven Masterstudiengängen dar. 6Künstlerische Studiengänge fördern die Fähigkeit zur künstlerischen Gestaltung und entwickeln diese fort.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1Die Qualifikationsziele und die angestrebten Lernergebnisse sind klar formuliert und tragen den in Artikel 2 Absatz 3 Nummer 1 Studienakkreditierungsstaatsvertrag genannten Zielen von Hochschulbildung nachvollziehbar Rechnung. 2 Die Dimension Persönlichkeitsbildung umfasst auch die künftige zivilgesellschaftliche, politische und kulturelle Rolle der Absolventinnen und Absolventen. Die Studierenden sollen nach ihrem Abschluss in der Lage sein, gesellschaftliche Prozesse kritisch, reflektiert sowie mit Verantwortungsbewusstsein und in demokratischem Gemeinsinn maßgeblich mitzugestalten.",
+              "prompt": "Gibt es hier vorgegebene Ziele der Qualifikation, die die Studierenden erreichen sollen? Falls ja, beschreibe kurz die Ziele."
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) Die fachlichen und wissenschaftlichen/künstlerischen Anforderungen umfassen die Aspekte Wissen und Verstehen (Wissensverbreiterung, Wissensvertiefung und Wissensverständnis), Einsatz, Anwendung und Erzeugung von Wissen/Kunst (Nutzung und Transfer, wissenschaftliche Innovation), Kommunikation und Kooperation sowie wissenschaftliches/künstlerisches Selbstverständnis / Professionalität und sind stimmig im Hinblick auf das vermittelte Abschlussniveau.",
+              "prompt": "Welche Anforderungen im Hinblick auf das Abschlussniveau stellt die Hochschule? z.B. Fähigkeit zur Analyse und Bewertung des Gelernten, Fähigkeit zu komplexen Zusammenhängen, Fähigkeit zum kritischen Denken usw.?"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "(3) 1Bachelorstudiengänge dienen der Vermittlung wissenschaftlicher Grundlagen, Methodenkompetenz und berufsfeldbezogener Qualifikationen und stellen eine breite wissenschaftliche Qualifizierung sicher. 2Konsekutive Masterstudiengänge sind als vertiefende, verbreiternde, fachübergreifende oder fachlich andere Studiengänge ausgestaltet. 3Weiterbildende Masterstudiengänge setzen qualifizierte berufspraktische Erfahrung von in der Regel nicht unter einem Jahr voraus. 4Das Studiengangskonzept weiterbildender Masterstudiengänge berücksichtigt die beruflichen Erfahrungen und knüpft zur Erreichung der Qualifikationsziele an diese an. 5Bei der Konzeption legt die Hochschule den Zusammenhang von beruflicher Qualifikation und Studienangebot sowie die Gleichwertigkeit der Anforderungen zu konsekutiven Masterstudiengängen dar. 6Künstlerische Studiengänge fördern die Fähigkeit zur künstlerischen 5Bei der Konzeption legt die Hochschule den Zusammenhang von beruflicher Qualifikation und Studienangebot sowie die Gleichwertigkeit der Anforderungen zu konsekutiven Masterstudiengängen dar. 6Künstlerische Studiengänge fördern die Fähigkeit zur künstlerischen Gestaltung und entwickeln diese fort.",
+              "prompt": "Handel es sich um einen Bachelorstudiengang? Wenn ja, inwiefern werden wissenschaftliche Grundlagen, Methodenkompetenz und berufsfeldbezogene Qualifikationen vermittelt?"
+            }
+          ]
+        },
+        {
+          "name": "§ 13 Fachlich-Inhaltliche Gestaltung der Studiengänge",
+          "name_short": "§ 13",
+          "position": 1,
+          "text": "(1) 1Die Aktualität und Adäquanz der fachlichen und wissenschaftlichen Anforderungen ist gewährleistet. 2Die fachlich-inhaltliche Gestaltung und die methodisch-didaktischen Ansätze des Curriculums werden kontinuierlich überprüft und an fachliche und didaktische Weiterentwicklungen angepasst. 3Dazu erfolgt eine systematische Berücksichtigung des fachlichen Diskurses auf nationaler und gegebenenfalls internationaler Ebene. (2) In Studiengängen, in denen die Bildungsvoraussetzungen für ein Lehramt vermittelt werden,sind Grundlage der Akkreditierung sowohl die Bewertung der Bildungswissenschaften und Fachwissenschaften sowie deren Didaktik nach ländergemeinsamen und länderspezifischen fachlichen Anforderungen als auch die ländergemeinsamen und länderspezifischen strukturellen Vorgaben für die Lehrerausbildung. (3) 1Im Rahmen der Akkreditierung von Lehramtsstudiengängen ist insbesondere zu prüfen, ob 1. ein integratives Studium an Universitäten oder gleichgestellten Hochschulen von mindestens zwei Fachwissenschaften und von Bildungswissenschaften in der Bachelorphase sowie in der Masterphase (Ausnahmen sind bei den Fächern Kunst und Musik zulässig), 2. schulpraktische Studien bereits während des Bachelorstudiums und 3 eine Differenzierung des Studiums und der Abschlüsse nach Lehrämtern erfolgt sind. 2Ausnahmen beim Lehramt für die beruflichen Schulen sind zulässig.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1Die Aktualität und Adäquanz der fachlichen und wissenschaftlichen Anforderungen ist gewährleistet. 2Die fachlich-inhaltliche Gestaltung und die methodisch-didaktischen Ansätze des Curriculums werden kontinuierlich überprüft und an fachliche und didaktische Weiterentwicklungen angepasst. 3Dazu erfolgt eine systematische Berücksichtigung des fachlichen Diskurses auf nationaler und gegebenenfalls internationaler Ebene.",
+              "prompt": "Wie wird sichergestellt, dass die fachlichen und wissenschaftlichen Anforderungen aktuell und adäquat sind? Z. B. Was müssen Studierende tun, um sicherzustellen, dass sie über aktuelle Wissenschaft und Fachwissen verfügen?"
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2)In Studiengängen, in denen die Bildungsvoraussetzungen für ein Lehramt vermittelt werden,sind Grundlage der Akkreditierung sowohl die Bewertung der Bildungswissenschaften und Fachwissenschaften sowie deren Didaktik nach ländergemeinsamen und länderspezifischen fachlichen Anforderungen als auch die ländergemeinsamen und länderspezifischen strukturellen Vorgaben für die Lehrerausbildung.",
+              "prompt": "Welche Grundlagen werden bei der Akkreditierung von Lehramtsstudiengängen berücksichtigt?"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "(3) 1Im Rahmen der Akkreditierung von Lehramtsstudiengängen ist insbesondere zu prüfen, ob 1. ein integratives Studium an Universitäten oder gleichgestellten Hochschulen von mindestens zwei Fachwissenschaften und von Bildungswissenschaften in der Bachelorphase sowie in der Masterphase (Ausnahmen sind bei den Fächern Kunst und Musik zulässig), 2. schulpraktische Studien bereits während des Bachelorstudiums und 3 eine Differenzierung des Studiums und der Abschlüsse nach Lehrämtern erfolgt sind. 2Ausnahmen beim Lehramt für die beruflichen Schulen sind zulässig.",
+              "prompt": "Was prüft die Akkreditierung von Lehramtsstudiengängen?"
+            }
+          ]
+        },
+
+        {
           "name": "§ 15 Geschlechtergerechtigkeit und Nachteilsausgleich",
           "name_short": "§ 15",
           "position": 100,
           "text": "Die Hochschule verfügt über Konzepte zur Geschlechtergerechtigkeit und zur Förderung der Chancengleichheit von Studierenden in besonderen Lebenslagen, die auf der Ebene des Studiengangs umgesetzt werden.",
           "text_formatted": "Die Hochschule verfügt über Konzepte zur Geschlechtergerechtigkeit und zur Förderung der Chancengleichheit von Studierenden in besonderen Lebenslagen, die auf der Ebene des Studiengangs umgesetzt werden.",
           "prompt": "Welchen Nachteilsausgleich gibt es?"
+        },
+        {
+          "name": "§ 16 Sonderregelungen für Joint-Degree-Programme",
+          "name_short": "§ 16",
+          "position": 3,
+          "text": "(1) 1Für Joint-Degree-Programme finden die Regelungen in § 11 Absätze 1 und 2, sowie § 12 Absatz 1 Sätze 1 bis 3, Absatz 2 Satz 1, Absätze 3 und 4 sowie § 14 entsprechend Anwendung. 2Daneben gilt: 1. Die Zugangsanforderungen und Auswahlverfahren sind der Niveaustufe und der Fachdisziplin, in der der Studiengang angesiedelt ist, angemessen. 2. Es kann nachgewiesen werden, dass mit dem Studiengang die angestrebten Lernergebnisse erreicht werden. 3. Soweit einschlägig, sind die Vorgaben der Richtlinie 2005/36/EG vom 07.09.2005 (ABl. L 255 vom 30.9.2005, S. 22-142) über die Anerkennung von Berufsqualifikationen, zuletzt geändert durch die Richtlinie 2013/55/EU vom 17.01.2014 (ABl. L 354 vom 28.12.2013, S. 132-170) berücksichtigt. 4. Bei der Betreuung, der Gestaltung des Studiengangs und den angewendeten Lehr- und Lernformen werden die Vielfalt der Studierenden und ihrer Bedürfnisse respektiert und die spezifischen Anforderungen mobiler Studierender berücksichtigt. 5. Das Qualitätsmanagementsystem der Hochschule gewährleistet die Umsetzung der vorstehenden und der in § 17 genannten Maßgaben. (2) Wird ein Joint Degree-Programm von einer inländischen Hochschule gemeinsam mit einer oder mehreren Hochschulen ausländischer Staaten koordiniert und angeboten, die nicht dem Europäischen Hochschulraum angehören (außereuropäische Kooperationspartner), so findet auf Antrag der inländischen Hochschule Absatz 1 entsprechende Anwendung, wenn sich die außereuropäischen Kooperationspartner in der Kooperationsvereinbarung mit der inländischen Hochschule zu einer Akkreditierung unter Anwendung der in Absatz 1, sowie der in den §§ 10 Absätze 1 und 2 und 33 Absatz 1 geregelten Kriterien und Verfahrensregeln verpflichtet.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "1Für Joint-Degree-Programme finden die Regelungen in § 11 Absätze 1 und 2, sowie § 12 Absatz 1 Sätze 1 bis 3, Absatz 2 Satz 1, Absätze 3 und 4 sowie § 14 entsprechend Anwendung. 2Daneben gilt: 1. Die Zugangsanforderungen und Auswahlverfahren sind der Niveaustufe und der Fachdisziplin, in der der Studiengang angesiedelt ist, angemessen. 2. Es kann nachgewiesen werden, dass mit dem Studiengang die angestrebten Lernergebnisse erreicht werden. 3. Soweit einschlägig, sind die Vorgaben der Richtlinie 2005/36/EG vom 07.09.2005 (ABl. L 255 vom 30.9.2005, S. 22-142) über die Anerkennung von Berufsqualifikationen, zuletzt geändert durch die Richtlinie 2013/55/EU vom 17.01.2014 (ABl. L 354 vom 28.12.2013, S. 132-170) berücksichtigt. 4. Bei der Betreuung, der Gestaltung des Studiengangs und den angewendeten Lehr- und Lernformen werden die Vielfalt der Studierenden und ihrer Bedürfnisse respektiert und die spezifischen Anforderungen mobiler Studierender berücksichtigt. 5. Das Qualitätsmanagementsystem der Hochschule gewährleistet die Umsetzung der vorstehenden und der in § 17 genannten Maßgaben.",
+              "prompt": "Welche Anforderungen müssen die Zugangsanforderungen und Auswahlverfahren erfüllen?"
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) Wird ein Joint Degree-Programm von einer inländischen Hochschule gemeinsam mit einer oder mehreren Hochschulen ausländischer Staaten koordiniert und angeboten, die nicht dem Europäischen Hochschulraum angehören (außereuropäische Kooperationspartner), so findet auf Antrag der inländischen Hochschule Absatz 1 entsprechende Anwendung, wenn sich die außereuropäischen Kooperationspartner in der Kooperationsvereinbarung mit der inländischen Hochschule zu einer Akkreditierung unter Anwendung der in Absatz 1, sowie der in den §§ 10 Absätze 1 und 2 und 33 Absatz 1 geregelten Kriterien und Verfahrensregeln verpflichtet.",
+              "prompt": "Wie beantragt die inländische Hochschule die Anwendung des Absatzes 1? z.B. müssen sich die außereuropäischen Kooperationspartner zu einer Akkreditierung, unter Anwendung der Kriterien und Verfahrensregeln, verpflichten?"
+            }
+          ]
+        },
+        {
+          "name": "§ 17 Konzept des Qualitätsmanagementsystems (Ziele, Prozesse, Instrumente)",
+          "name_short": "§ 17",
+          "position": 1,
+          "text": "(1)1Die Hochschule verfügt über ein Leitbild für die Lehre, das sich in den Curricula ihrer Studiengänge widerspiegelt. 2Das Qualitätsmanagementsystem folgt den Werten und Normen des Leitbildes für die Lehre und zielt darauf ab, die Studienqualität kontinuierlich zu verbessern. 3Es gewährleistet die systematische Umsetzung der in Teil 2 und 3 genannten Maßgaben. 4Die Hochschule hat Entscheidungsprozesse, Zuständigkeiten und Verantwortlichkeiten für die Einrichtung, Überprüfung, Weiterentwicklung und Einstellung von Studiengängen und die hochschuleigenen Verfahren zur Akkreditierung von Studiengängen im Rahmen ihres Qualitätsmanagementsystems festgelegt und hochschulweit veröffentlicht. (2) 1Das Qualitätsmanagementsystem wurde unter Beteiligung der Mitgliedsgruppen der Hochschule und unter Einbeziehung externen Sachverstands erstellt. 2Es stellt die Unabhängigkeit von Qualitätsbewertungen sicher und enthält Verfahren zum Umgang mit hochschulinternen Konflikten sowie ein internes Beschwerdesystem. 3Es beruht auf geschlossenen Regelkreisen, umfasst alle Leistungsbereiche der Hochschule, die für Studium und Lehre unmittelbar relevant sind und verfügt über eine angemessene und nachhaltige Ressourcenausstattung. 4Funktionsfähigkeit und Wirksamkeit mit Bezug auf die Studienqualität werden von der Hochschule regelmäßig überprüft und kontinuierlich weiterentwickelt.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1)1Die Hochschule verfügt über ein Leitbild für die Lehre, das sich in den Curricula ihrer Studiengänge widerspiegelt. 2Das Qualitätsmanagementsystem folgt den Werten und Normen des Leitbildes für die Lehre und zielt darauf ab, die Studienqualität kontinuierlich zu verbessern. 3Es gewährleistet die systematische Umsetzung der in Teil 2 und 3 genannten Maßgaben. 4Die Hochschule hat Entscheidungsprozesse, Zuständigkeiten und Verantwortlichkeiten für die Einrichtung, Überprüfung, Weiterentwicklung und Einstellung von Studiengängen und die hochschuleigenen Verfahren zur Akkreditierung von Studiengängen im Rahmen ihres Qualitätsmanagementsystems festgelegt und hochschulweit veröffentlicht.",
+              "prompt": "Was ist das Ziel des Qualitätsmanagementsystems? z.B. die Qualität der Lehre kontinuierlich zu verbessern, die Funktionsfähigkeit und Wirkung des Systems zu überprüfen, Qualitätsbewertungen vorzunehmen..."
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) 1Das Qualitätsmanagementsystem wurde unter Beteiligung der Mitgliedsgruppen der Hochschule und unter Einbeziehung externen Sachverstands erstellt. 2Es stellt die Unabhängigkeit von Qualitätsbewertungen sicher und enthält Verfahren zum Umgang mit hochschulinternen Konflikten sowie ein internes Beschwerdesystem. 3Es beruht auf geschlossenen Regelkreisen, umfasst alle Leistungsbereiche der Hochschule, die für Studium und Lehre unmittelbar relevant sind und verfügt über eine angemessene und nachhaltige Ressourcenausstattung. 4Funktionsfähigkeit und Wirksamkeit mit Bezug auf die Studienqualität werden von der Hochschule regelmäßig überprüft und kontinuierlich weiterentwickelt.",
+              "prompt": "Wie kann die Unabhängigkeit von Qualitätsbewertungen sichergestellt werden? Was ist das Ziel des Qualitätsmanagementsystems der Hochschule? z.B. Eine kontinuierlich erhöhte Studienqualität, Einhaltung höchster Standards, Unabhängigkeit von Qualitätsbewertungen etc."
+            }
+          ]
+        },
+        {
+          "name": "§ 20 Hochschulische Kooperationen",
+          "name_short": "§ 20",
+          "position": 3,
+          "text": "(1) 1 Führt eine Hochschule eine studiengangsbezogene Kooperation mit einer anderen Hochschule durch, gewährleistet die gradverleihende Hochschule bzw. gewährleisten die gradverleihenden Hochschulen die Umsetzung und die Qualität des Studiengangskonzeptes. 2 Art und Umfang der Kooperation sind beschrieben und die der Kooperation zu Grunde liegenden Vereinbarungen dokumentiert. (2) 1 Führt eine systemakkreditierte Hochschule eine studiengangsbezogene Kooperation"pioug  mit einer anderen Hochschule durch, kann die systemakkreditierte Hochschule dem Studiengang das Siegel des Akkreditierungsrates gemäß § 22 Absatz 4 Satz 2 verleihen, sofern sie selbst gradverleihend ist und die Umsetzung und die Qualität des Studiengangskonzeptes gewährleistet. 2 Abs. 1 Satz 2 gilt entsprechend. (3) 1 Im Fall der Kooperation vonHochschulen auf der Ebene ihrer Qualitätsmanagementsysteme ist eine Systemakkreditierung jeder der beteiligten Hochschulen erforderlich. 2 Auf Antrag der kooperierenden Hochschulen ist ein gemeinsames Verfahren derSystemakkreditierung zulässig.",
+          "subcriteria":
+          [
+            {
+              "subcriterion_nr": 1,
+              "name": "Absatz 1",
+              "text": "(1) 1 Führt eine Hochschuleeine studiengangsbezogene Kooperation mit einer anderen Hochschule durch, gewährleistet die gradverleihende Hochschule bzw. gewährleisten diegradverleihenden Hochschulen die Umsetzung und die Qualität desStudiengangskonzeptes. 2 Art und Umfang der Kooperation sind beschrieben und die der Kooperation zu Grunde liegenden Vereinbarungen dokumentiert.",
+              "prompt": "Wie wird die Umsetzung und die Qualität des Studiengangskonzeptes gewährleistet? z.B. Systemakkreditierung, regelmäßige Überwachung, Teilnahme an Weiterbildungsprogrammen"
+            },
+            {
+              "subcriterion_nr": 2,
+              "name": "Absatz 2",
+              "text": "(2) 1 Führt eine systemakkreditierte Hochschule eine studiengangsbezogene Kooperation mit einer anderen Hochschule durch, kann die systemakkreditierte Hochschule dem Studiengang das Siegel des Akkreditierungsrates gemäß § 22 Absatz 4 Satz 2 verleihen, sofern sie selbst gradverleihend ist und die Umsetzung und die Qualität des Studiengangskonzeptes gewährleistet. 2 Abs. 1 Satz 2 gilt entsprechend.",
+              "prompt": "Wie kann das Siegel des Akkreditierungsrates gemäß § 22 Absatz 4 Satz 2 verliehen werden? z.B. Durch ein gemeinsames Verfahren der Systemakkreditierung, durch eine qualitativ hochwertige Umsetzung der Studiengangskooperation"
+            },
+            {
+              "subcriterion_nr": 3,
+              "name": "Absatz 3",
+              "text": "(3) 1 Im Fall der Kooperation von Hochschulen auf der Ebene ihrer Qualitätsmanagementsysteme ist eine Systemakkreditierung jeder der beteiligten Hochschulen erforderlich. 2 Auf Antrag der kooperierenden Hochschulen ist ein gemeinsames Verfahren der Systemakkreditierung zulässig.",
+              "prompt": "Was muss bei der Kooperation von Hochschulen auf der Ebene ihrer Qualitätsmanagementsysteme beachtet werden? z.B. Eine Systemakkreditierung ist erforderlich, es ist ein gemeinsames Verfahren der Systemakkreditierung zulässig."
+            }
+          ]
         }
-      ]
     }
   ]
 }
