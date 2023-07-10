@@ -8,7 +8,7 @@ def load_json(file_path):
 
 
 # this function generates the layout in the AccCheckTab
-def create_crit_layout(crit_container, crit_dict):
+def create_crit_layout(crit_container, crit_dict, key):
     crit_container.write(crit_dict["text"])
     crit_col1, crit_col2 = crit_container.columns([3, 2])
 
@@ -19,17 +19,19 @@ def create_crit_layout(crit_container, crit_dict):
     sug_resp_def = "" if "response" not in crit_dict else crit_dict["response"]
 
     # note: for streamlit, each text area must have unique key
-    crit_col1.text_area(f'{crit_dict["name"]} Retrieved Text', retrieved_txt_def, height=200)
-    crit_col2.text_area(f'{crit_dict["name"]} Suggested Response', sug_resp_def, height=200)
+    crit_col1.text_area(f'{key} Retrieved Text', retrieved_txt_def, height=200)
+    crit_col2.text_area(f'{key} Suggested Response', sug_resp_def, height=200)
 
 
 def generate_crit_layout(criterion):
     crit_expander = st.expander(f"**{criterion['name']}**")
     if "subcriteria" in criterion:
         for s in criterion["subcriteria"]:
-            create_crit_layout(crit_expander, s)
+            key = f'{criterion["name_short"]} {s["name"]}'
+            create_crit_layout(crit_expander, s, key)
     else:
-        create_crit_layout(crit_expander, criterion)
+        key = f'{criterion["name_short"]}'
+        create_crit_layout(crit_expander, criterion, key)
 
 
 # saves criteria to dict, differentiating between criteria and subcriteria

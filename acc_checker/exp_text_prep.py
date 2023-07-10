@@ -1,5 +1,5 @@
-from acc_checker.vector_prep.text_prep import return_clean_pdf_text, get_text_chunks
-from acc_checker.vector_prep.embedder import get_vectorstore
+from acc_checker.text_prep.text_prep import return_clean_pdf_text, get_text_chunks
+from acc_checker.text_prep.embedder import get_vectorstore
 from dotenv import load_dotenv
 
 load_dotenv()

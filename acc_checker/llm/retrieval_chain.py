@@ -29,6 +29,7 @@ class AnalysisExecutor:
         return response
 
 
+
     # source documents must be list containing <class 'langchain.schema.Document'> objects
     def combine_doc_strings(self, source_documents):
         if source_documents is None:

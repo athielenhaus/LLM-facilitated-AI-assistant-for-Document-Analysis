@@ -110,9 +110,9 @@ class TextProcessor:
         self.token_price = PRICE_PER_1K_TOKENS
 
 
-    def extract_text_by_page(self, file):
+    def extract_text_by_page(self):
         # with open(pdf_path, 'rb') as fh:
-        for page in PDFPage.get_pages(file,
+        for page in PDFPage.get_pages(self.file,
                                       caching=True,
                                       check_extractable=True):
             resource_manager = PDFResourceManager()
