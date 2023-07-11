@@ -1,7 +1,7 @@
 import streamlit as st
 from functions import load_json, generate_crit_layout, generate_crit_mgmt_layout
-from text_prep.text_prep import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
-from text_prep.text_prep2 import FileProcessor
+from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
+from text_prep.text_prep import FileProcessor
 from text_prep.embedder import get_vectorstore
 from dotenv import load_dotenv
 from llm.retrieval_chain import AnalysisExecutor
@@ -13,12 +13,19 @@ import json
 def display_results(pdf_doc):
     with st.spinner("Processing"):
         if pdf_doc is not None:
-            st.session_state.cleaned_text = return_clean_pdf_text(pdf_doc)                      # take uploaded PDF, extract and clean text
-            st.session_state.text_length = len(st.session_state.cleaned_text)                   # obtain text length
-            st.session_state.text_chunks = get_text_chunks(st.session_state.cleaned_text)       # break into text chunks for embedding
-            # get number of tokens and price. Note that due to text overlap we use text_chunks variable (not cleaned_text)
-            st.session_state.nr_tokens, st.session_state.price = get_nr_of_tokens_and_price(st.session_state.text_chunks,
-                                                                                            0.0001)
+            fp = FileProcessor(pdf_doc)
+            st.session_state.cleaned_text = fp.preview_text
+            st.session_state.text_length = fp.text_length
+            st.session_state.text_chunks = fp.text_chunks
+            st.session_state.nr_tokens = fp.nr_tokens
+            st.session_state.price = fp.price
+
+            # st.session_state.cleaned_text = return_clean_pdf_text(pdf_doc)                      # take uploaded PDF, extract and clean text
+            # st.session_state.text_length = len(st.session_state.cleaned_text)                   # obtain text length
+            # st.session_state.text_chunks = get_text_chunks(st.session_state.cleaned_text)       # break into text chunks for embedding
+            # # get number of tokens and price. Note that due to text overlap we use text_chunks variable (not cleaned_text)
+            # st.session_state.nr_tokens, st.session_state.price = get_nr_of_tokens_and_price(st.session_state.text_chunks,
+            #                                                                                 0.0001)
         else:
             pass
 

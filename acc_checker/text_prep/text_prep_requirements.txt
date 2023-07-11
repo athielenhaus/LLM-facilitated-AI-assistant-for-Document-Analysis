@@ -1,0 +1,6 @@
+Text Prep Requirements
+
+- can get text from PDF file with metadata
+- can clean text for purposes of text preview in frontend
+- can split retrieved text into chunks while preserving metadata
+- can tokenize and estimate cost of embedding text chunks
