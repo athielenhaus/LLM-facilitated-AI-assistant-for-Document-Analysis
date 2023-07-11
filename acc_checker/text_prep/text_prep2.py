@@ -67,3 +67,35 @@ class FileProcessor:
         text_chunks = text_splitter.create_documents([full_text])
         return text_chunks
 
+
+    def combine_chunks_with_metadata(self, clean_docs, chunks):
+        final_chunks = []
+        for chunk in chunks:
+            final_chunk_content = chunk.page_content
+            print("final doc content:", final_chunk_content)
+
+            # get first line of chunk content to be matched with clean docs
+            match_content = final_chunk_content[:120]
+
+            # loop through clean docs and find match
+            for doc in clean_docs:
+                if match_content in doc.page_content:
+                    final_chunk_metadata = doc.metadata
+                    final_chunk = Document(page_content=final_chunk_content, metadata=final_chunk_metadata)
+                    final_chunks.append(final_chunk)
+                else:
+                    pass
+
+        return final_chunks
+
+
+
+
+fp = FileProcessor()
+doc1 = Document(page_content="this is a test string. Hallelujah!", metadata={"test_info": "a"})
+doc2 = Document(page_content="this is another, somewhat longer test string", metadata={"test_info": "b"})
+text_chunk1 = Document(page_content="this is a test string.")
+text_chunk2 = Document(page_content="somewhat longer test string")
+chunks_with_metadata = fp.combine_chunks_with_metadata([doc1, doc2], [text_chunk1, text_chunk2])
+print(chunks_with_metadata[0])
+print(chunks_with_metadata[1])
