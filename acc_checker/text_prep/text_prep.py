@@ -18,7 +18,6 @@ class FileProcessor:
         self.nr_tokens, self.price = self.get_nr_of_tokens_and_price(self.text_chunks)
 
 
-
     # PDFPlumberLoader.load() returns list with page content and metadata for each page in PDF
     def load_data(self, file_path):
         loader = PDFPlumberLoader(file_path)

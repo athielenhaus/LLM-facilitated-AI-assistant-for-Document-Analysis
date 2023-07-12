@@ -1,19 +1,22 @@
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
-
+from langchain.docstore.document import Document
+from dotenv import load_dotenv
 
 class AnalysisExecutor:
 
 
     def __init__(self, criteria_set, vector_store):
+
         self.criteria_set = criteria_set
         self.vector_store = vector_store
-        self.retrieval_chain = self.get_retrieval_chain(vector_store)
-        self.answer_list = self.get_and_store_all_llm_responses_and_source_docs(criteria_set, self.retrieval_chain)
+        # self.retrieval_chain = self.get_retrieval_chain(vector_store)
+        # self.answer_list = self.get_and_store_all_llm_responses_and_source_docs(criteria_set, self.retrieval_chain)
 
 
     def get_retrieval_chain(self, vector_store):
+        load_dotenv()
         llm = OpenAI(temperature=0.0)  # initialize LLM model
         #         turbo_llm = ChatOpenAI(temperature= 0.0, model_name='gpt-3.5-turbo')
         retrieval_chain = RetrievalQA.from_llm(
@@ -37,7 +40,7 @@ class AnalysisExecutor:
         else:
             source_str = ""
             for d in source_documents:
-                source_str += d.page_content
+                source_str += f"{d.page_content} (source: {d.metadata['source']}) "
             return source_str
 
 
@@ -66,4 +69,14 @@ class AnalysisExecutor:
         return criteria_and_response_set
 
 
+# ae = AnalysisExecutor(None, None)
+# ret_chain = ae.get_retrieval_chain(None)
+# print(type(ret_chain))
 
+
+# doc1 = Document(page_content="hello", metadata={"source": "source_a"})
+# doc2 = Document(page_content="world", metadata={"source": "source_b"})
+# docs = [doc1, doc2]
+# source_string = ae.combine_doc_strings(docs)
+# print(source_string)
+# self.assertEquals(source_string, "hello (source: source_a) world (source: source_b)")
