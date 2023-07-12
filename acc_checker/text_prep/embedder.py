@@ -13,7 +13,6 @@ class Embedder():
         if docs is not None:
             embeddings = OpenAIEmbeddings()
             vectorstore = FAISS.from_documents(documents=docs, embedding=embeddings)
-            # print('EMBEDDING COMPLETED!')
             return vectorstore
         else:
             pass
