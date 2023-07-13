@@ -34,7 +34,7 @@ While there are presumably multiple use-cases for LLMs in the context of accredi
 
 the tools used will include:
 
-* Langchain: a library which simplifies working with LLMs. It includes:
+* Langchain: a relatively new library (released in October 2022) which simplifies working with LLMs. From this library I am using:
     - PDF loaders (PDFPlumber)
     - Text splitters: for splitting documents into chunks which can be processed for embedding purposes
     - OpenAI Embeddings: fast embeddings API which charges a small amount per submitted token.
