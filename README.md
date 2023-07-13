@@ -22,7 +22,7 @@ To determine whether or not these formal criteria are met, auditors review the o
 - the module catalog (_Modulhandbuch_) 
 
 ...and a variety of other documents. Auditors summarize their findings in an official Accreditation Report, which is submitted to the federal German Accreditation Board.
-Essentially, this part of the procedure is a simple search and check exercise which, however, due to the often vast amounts of documentation provided, can be tedious to complete. Formal HEI documentation is seldomly structured in a manner conducive to auditing, and can significantly differ in terms of structure and content from one institution to the next. 
+Essentially, this part of the procedure is a simple search and check exercise which, however, due to the often vast amounts of documentation provided, can be tedious to complete. Formal HEI documentation can differ significantly in terms of structure and content from one institution to the next. 
 
 #### Project Objective
 
