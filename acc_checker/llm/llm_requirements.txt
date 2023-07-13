@@ -2,6 +2,6 @@ Requirements for LLM package and Notes
 
 - it would be good to be able to save vector stores to disk so that you can have several vector stores, can load projects and dont have to repeat the embedding process
 - this would also be necessary in order to establish some sort of automated testing process
-- in order to minimize
+-
 
 

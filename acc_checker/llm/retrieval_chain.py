@@ -40,7 +40,10 @@ class AnalysisExecutor:
         else:
             source_str = ""
             for d in source_documents:
-                source_str += f"{d.page_content} (source: {d.metadata['source']}) "
+                if "page" in d.metadata:
+                    source_str += f"{d.page_content} (source: {d.metadata['source']}, pg. {d.metadata['page']}) "
+                else:
+                    source_str += f"{d.page_content} (source: {d.metadata['source']}) "
             return source_str
 
 

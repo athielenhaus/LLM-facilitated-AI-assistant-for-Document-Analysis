@@ -2,7 +2,7 @@ import streamlit as st
 from functions import load_json, generate_crit_layout, generate_crit_mgmt_layout
 from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from text_prep.text_prep import FileProcessor
-from text_prep.embedder import get_vectorstore
+from text_prep.embedder import Embedder
 from dotenv import load_dotenv
 from llm.retrieval_chain import AnalysisExecutor
 import json
@@ -33,7 +33,7 @@ def display_results(pdf_doc):
 # this function is activated by the "Embed as vectors" button on the TextInspectTab
 def execute_embedding(fact_container):
     with st.spinner("Processing"):
-        st.session_state.vector_store = get_vectorstore(st.session_state.text_chunks)
+        st.session_state.vector_store = Embedder(st.session_state.text_chunks).vector_store
         fact_container.write("Embedding completed!")
 
 
@@ -172,15 +172,19 @@ def acc_check():
 
 
     with TestTab:
-        counter_cont = st.container()
-        counter_cont.write(st.session_state.counter)
-        json_object = json.dumps(st.session_state.criteria_set, indent=4, ensure_ascii=False)
-        st.download_button("Download criteria as JSON", json_object, file_name="test.json")
-        add_button = st.button("Add one")
+        st.header("Download Section")
 
-        if add_button:
-            with st.spinner("Processing"):
-                st.session_state.counter += 1
+        # json should be created once the button has been triggered
+        json_object = json.dumps(st.session_state.criteria_set, indent=4, ensure_ascii=False)
+        file_name = st.text_input("Please insert a file name", "criteria_and_results.json" )
+        st.download_button("Download criteria as JSON", json_object, file_name=file_name)
+
+        # counter_cont = st.container()
+        # counter_cont.write(st.session_state.counter)
+        # add_button = st.button("Add one")
+        # if add_button:
+        #     with st.spinner("Processing"):
+        #         st.session_state.counter += 1
                 # counter_cont.write("point added!")
                 # st.balloons()
                 # st.info("Useful info")
