@@ -32,7 +32,7 @@ While there are presumably multiple use-cases for LLMs in the context of accredi
 
 ### Toolkit
 
-the tools used will include:
+the tools used include:
 
 * Langchain: a relatively new library (released in October 2022) which simplifies working with LLMs. From this library I am using:
     - PDF loaders (PDFPlumber)
