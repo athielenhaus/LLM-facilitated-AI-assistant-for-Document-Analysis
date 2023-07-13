@@ -1,6 +1,6 @@
 from retrieval_chain import AnalysisExecutor
 from langchain.docstore.document import Document
-from acc_checker.text_prep.embedder import Embedder
+from acc_checker.text_prep.create_chromaDB import get_chroma_db
 import unittest
 
 
@@ -12,7 +12,8 @@ class TestAnalysisExecutor(unittest.TestCase):
                              {"name": "crit b", "prompt": self.prompt}]
         self.doc1 = Document(page_content="1 + 1 does not equal 4", metadata={"source": "source_a"})
         self.doc2 = Document(page_content="France is an interesting country", metadata={"source": "source_b"})
-        self.vector_store = Embedder([self.doc1, self.doc2]).vector_store
+        # self.vector_store = Embedder([self.doc1, self.doc2]).vector_store
+        self.vector_store = get_chroma_db()
         self.ae = AnalysisExecutor(self.criteria_set, self.vector_store)
         self.retrieval_chain = self.ae.get_retrieval_chain(self.vector_store)
 
