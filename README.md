@@ -4,23 +4,24 @@
 For decades, German university- and higher-education programs have been audited by external "Accreditation" agencies. 
 The purpose of these audits is to ensure conformity with state-level education regulations. These include formal, objective requirements, pertaining for example to:
 
-    - the length of degree programs
-    - the degree types which can be awarded
-    - the structure of the degree programs
-    - the proper implementation of European regulations (for example, the European Credit Transfer System - ECTS)
-    - etc.
+- the length of degree programs
+- the degree types which can be awarded
+- the structure of the degree programs
+- the proper implementation of European regulations (for example, the European Credit Transfer System - ECTS)
+- etc.
 
 An example of one such regulation:
 
-    "The standard periods of study for full-time study are six, seven or eight semesters for bachelor's programs and four, three or two semesters for master's programs. For bachelor's degree programs, the standard period of study for full-time study is at least three years. For consecutive degree programs, the total standard period of full-time study is five years (ten semesters)." (Source: Musterrechtsverordnung, Stiftung Akkreditierungsrat)
+>"The standard periods of study for full-time study are six, seven or eight semesters for bachelor's programs and four, three or two semesters for master's programs. For bachelor's degree programs, the standard period of study for full-time study is at least three years. For consecutive degree programs, the total standard period of full-time study is five years (ten semesters)." (Source: _Musterrechtsverordnung_, Stiftung Akkreditierungsrat)
 
 #### Current quality assurance procedure
 To determine whether or not these formal criteria are met, auditors review the official documentation provided by the higher education institution. This documentation typically includes:
-    - the syllabus
-    - the examination regulations (_Prüfungsordnung_), 
-    - the module catalog (_Modulhandbuch_) 
 
-...and a variety of other documents. Auditors summarize their findings in an official Accreditation Report, which is submitted to the German Accreditation Board.
+- the syllabus
+- the examination regulations (_Prüfungsordnung_), 
+- the module catalog (_Modulhandbuch_) 
+
+...and a variety of other documents. Auditors summarize their findings in an official Accreditation Report, which is submitted to the federal German Accreditation Board.
 Essentially, this part of the procedure is a simple search and check exercise which, however, due to the often vast amounts of documentation provided, can be tedious to complete. Formal HEI documentation is seldomly structured in a manner conducive to auditing, and can significantly differ in terms of structure and content from one institution to the next. 
 
 #### Project Objective
