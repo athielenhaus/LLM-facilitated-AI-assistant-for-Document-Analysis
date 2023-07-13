@@ -24,9 +24,14 @@ To determine whether or not these formal criteria are met, auditors review the o
 ...and a variety of other documents. Auditors summarize their findings in an official Accreditation Report, which is submitted to the federal German Accreditation Board.
 Essentially, this part of the procedure is a simple search and check exercise which, however, due to the often vast amounts of documentation provided, can be tedious to complete. Formal HEI documentation can differ significantly in terms of structure and content from one institution to the next. 
 
-#### Project Objective
+#### Project Objectives
 
-The goal of this project is to parse formal HEI documents, check them for content relevant to the official criteria, and to - with the help of a Large Language Model (LLM) - summarize the findings in a manner so that they can be copy-pasted into the Accreditation Report. At the same time, we want to determine whether this is a viable approach in terms of costs.
+The goal of this project is to: 
+- parse formal HEI documents
+- retrieve content relevant to the official criteria
+- with the help of a Large Language Model (LLM), generate conclusions and summarize findings
+- provide a tool with a user interface which allows users to upload formal documents, and view generated conclusions and related source documents
+- determine whether this is a viable approach in terms of costs
 
 While there are presumably multiple use-cases for LLMs in the context of accreditation, the one described above may be among the simplest ones to achieve, also because data samples in the form of formal documents published on German HEI websites are readily available. 
 
