@@ -27,9 +27,8 @@ Essentially, this part of the procedure is a simple search and check exercise wh
 #### Project Objectives
 
 The goal of this project is to: 
-- parse formal HEI documents
-- retrieve content relevant to the official criteria
-- with the help of a Large Language Model (LLM), generate conclusions and summarize findings
+- parse formal HEI documents and retrieve content relevant to the official regulations
+- generate conclusions and summarize findings with the help of a Large Language Model (LLM)
 - provide a tool with a user interface which allows users to upload formal documents, and view generated conclusions and related source documents
 - determine whether this is a viable approach in terms of costs
 
