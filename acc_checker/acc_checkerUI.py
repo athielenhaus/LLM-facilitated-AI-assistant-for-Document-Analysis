@@ -1,10 +1,10 @@
 import streamlit as st
-from functions import load_json, generate_crit_layout, generate_crit_mgmt_layout
+from functionsUI import load_json, generate_crit_layout, generate_crit_mgmt_layout
 from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from text_prep.text_prep import FileProcessor
 from text_prep.embedder import Embedder
 from dotenv import load_dotenv
-from llm.retrieval_chain import AnalysisExecutor
+from llm.analysis_executor import AnalysisExecutor
 import json
 
 

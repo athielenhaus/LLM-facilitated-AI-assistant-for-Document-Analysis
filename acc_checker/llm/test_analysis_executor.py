@@ -1,7 +1,9 @@
-from retrieval_chain import AnalysisExecutor
+from analysis_executor import AnalysisExecutor
 from langchain.docstore.document import Document
 from acc_checker.text_prep.create_chromaDB import get_chroma_db
+from langchain.callbacks import get_openai_callback
 import unittest
+
 
 
 class TestAnalysisExecutor(unittest.TestCase):
@@ -31,7 +33,7 @@ class TestAnalysisExecutor(unittest.TestCase):
 
 
     def test_get_and_store_all_llm_response_and_source_docs(self):
-        response_set = self.ae.get_and_store_all_llm_responses_and_source_docs(self.criteria_set, self.retrieval_chain)
+        response_set, cost = self.ae.get_and_store_all_llm_responses_and_source_docs(self.criteria_set, self.retrieval_chain)
         for c in response_set:
             if "subcriteria" in c:
                 for s in c["subcriteria"]:
@@ -40,3 +42,4 @@ class TestAnalysisExecutor(unittest.TestCase):
             else:
                 assert "No" in c["response"]
                 assert "source_a" in c["source"]
+        assert isinstance(cost.total_cost, float)
