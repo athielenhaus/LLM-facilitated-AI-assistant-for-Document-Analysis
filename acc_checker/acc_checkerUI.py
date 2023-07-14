@@ -149,18 +149,25 @@ def acc_check():
         acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
         import_crit_button = st.button("Import criteria", on_click=import_criteria_set)
 
-        if st.session_state.answer_list is None:
-            for c in st.session_state.criteria_set:
+        if st.session_state.criteria_set is not None:
+            if st.session_state.answer_list is None:
+                for c in st.session_state.criteria_set:
+                        generate_crit_layout(c)
+            else:
+                for c in st.session_state.answer_list:
                     generate_crit_layout(c)
         else:
-            for c in st.session_state.answer_list:
-                generate_crit_layout(c)
+            pass
 
 
     with CritMgmtTab:
-        # create expander for each criterion
-        for count, criterion in enumerate(st.session_state.criteria_set):
-            generate_crit_mgmt_layout(criterion, count)
+
+        if st.session_state.criteria_set is not None:
+            # create expander for each criterion
+            for count, criterion in enumerate(st.session_state.criteria_set):
+                generate_crit_mgmt_layout(criterion, count)
+        else:
+            st.write("Please import criteria using button on previous tab")
 
 
                 # BUTTON FOR ADDING ADDITIONAL CRITERIA --> NICE-TO-HAVE
