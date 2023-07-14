@@ -59,8 +59,7 @@ def run_analysis():
     with st.spinner("Processing"):
         st.session_state.analyzer = AnalysisExecutor(st.session_state.criteria_set, st.session_state.vector_store)
         st.session_state.answer_list = st.session_state.analyzer.answer_list
-
-
+        st.session_state.analysis_cost = st.session_state.analyzer.cost.total_cost
 
 
 def acc_check():
@@ -92,6 +91,8 @@ def acc_check():
         st.session_state.analyzer = None
     if "answer_list" not in st.session_state:
         st.session_state.answer_list = None
+    if "analysis_cost" not in st.session_state:
+        st.session_state.analysis_cost = 0
 
 
     # markdown test
@@ -146,7 +147,11 @@ def acc_check():
         '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **related text snippets** retrieved from the documents 
         \n- **suggested conclusions**.'''
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
+
         acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
+        st.write("Analysis Cost")
+        analysis_cost_display = st.container().write(st.session_state.analysis_cost)
+
         import_crit_button = st.button("Import criteria", on_click=import_criteria_set)
 
         if st.session_state.criteria_set is not None:
