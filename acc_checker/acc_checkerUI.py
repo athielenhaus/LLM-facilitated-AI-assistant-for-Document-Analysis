@@ -39,8 +39,7 @@ def execute_embedding(fact_container):
 
 # this function is activated by the "Import criteria" button on the AccCheckTab
 def import_criteria_set():
-    # file_path = os.path.join("..", 'criteria_sets.json')
-    file_path = 'criteria_sets_two_levels.json'
+    file_path = 'criteria_prompts_draft.json'
     criteria_sets = load_json(file_path)
     st.session_state.criteria_set = criteria_sets['criteria_sets'][0]['criteria']
     return st.session_state.criteria_set
@@ -55,12 +54,14 @@ def add_subcrit_to_dict(count):
     subcrit_list.append(empty_subcrit_dict)
 
 
-def run_analysis():
-    with st.spinner("Processing"):
-        st.session_state.analyzer = AnalysisExecutor(st.session_state.criteria_set, st.session_state.vector_store)
-        st.session_state.answer_list = st.session_state.analyzer.answer_list
-        st.session_state.analysis_cost = st.session_state.analyzer.cost.total_cost
-
+def run_analysis(container):
+    if st.session_state.criteria_set is not None and st.session_state.vector_store is not None:
+        with container.spinner("Processing"):
+            st.session_state.analyzer = AnalysisExecutor(st.session_state.criteria_set, st.session_state.vector_store)
+            st.session_state.answer_list = st.session_state.analyzer.answer_list
+            st.session_state.analysis_cost = st.session_state.analyzer.cost.total_cost
+    else:
+        container.warning('Please make sure you have imported criteria and embedded the text', icon="⚠️")
 
 def acc_check():
 
@@ -148,11 +149,12 @@ def acc_check():
         \n- **suggested conclusions**.'''
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
 
-        acc_check_button = st.button("**Begin document analysis**", on_click=run_analysis)
+        acc_check_button_container = st.container()
+        import_crit_button = acc_check_button_container.button("Import criteria", on_click=import_criteria_set)
+
+        acc_check_button = acc_check_button_container.button("**Begin document analysis**", on_click=run_analysis, args=(acc_check_button_container,))
         st.write("Analysis Cost")
         analysis_cost_display = st.container().write(st.session_state.analysis_cost)
-
-        import_crit_button = st.button("Import criteria", on_click=import_criteria_set)
 
         if st.session_state.criteria_set is not None:
             if st.session_state.answer_list is None:
