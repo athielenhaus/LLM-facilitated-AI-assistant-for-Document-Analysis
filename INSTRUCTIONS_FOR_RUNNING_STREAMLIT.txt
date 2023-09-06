@@ -4,7 +4,7 @@ python -m streamlit run C:\Users\Arne\Documents\GitHub\accreditationLLM_project\
 
 It is essential to include python -m, otherwise the modules will not be recognized.
 
-Also note that the virtual environment must be activated.
+Also note that the virtual environment must be activated. In VS Code, this can be done by first running: .\venv\Scripts\Activate
 
 NOTE: running the file within the IDE will cause a session-state error.
 However, this problem will not occur if we simply run the file from the terminal.
