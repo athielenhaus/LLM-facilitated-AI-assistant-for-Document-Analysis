@@ -1,6 +1,6 @@
 import streamlit as st
 from functionsUI import load_json, generate_crit_layout, generate_crit_mgmt_layout
-from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
+# from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 from text_prep.text_prep import FileProcessor
 from text_prep.embedder import Embedder
 from dotenv import load_dotenv
@@ -14,8 +14,8 @@ def display_results(pdf_doc):
     with st.spinner("Processing"):
         if pdf_doc is not None:
             fp = FileProcessor(pdf_doc)
-            st.session_state.cleaned_text = fp.preview_text
             st.session_state.text_length = fp.text_length
+            st.session_state.cleaned_text = fp.preview_text
             st.session_state.text_chunks = fp.text_chunks
             st.session_state.nr_tokens = fp.nr_tokens
             st.session_state.price = fp.price
@@ -39,7 +39,8 @@ def execute_embedding(fact_container):
 
 # this function is activated by the "Import criteria" button on the AccCheckTab
 def import_criteria_set():
-    file_path = 'criteria_prompts_draft.json'
+    # file_path = 'criteria_prompts_draft.json'
+    file_path = 'acc_checker/criteria_prompts_draft.json'
     criteria_sets = load_json(file_path)
     st.session_state.criteria_set = criteria_sets['criteria_sets'][0]['criteria']
     return st.session_state.criteria_set
@@ -81,7 +82,7 @@ def acc_check():
     if "vector_store" not in st.session_state:
         st.session_state.vector_store = None
     if "cleaned_text" not in st.session_state:
-        st.session_state.cleaned_text = ""
+        st.session_state.cleaned_text = 'na'
     if "text_chunks" not in st.session_state:
         st.session_state.text_chunks = None
     if "counter" not in st.session_state:
@@ -145,7 +146,7 @@ def acc_check():
 
     with AccCheckTab:
         st.header("Automated document analysis")
-        '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **related text snippets** retrieved from the documents 
+        '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **related text snippets** retrieved from the documents
         \n- **suggested conclusions**.'''
         'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
 
