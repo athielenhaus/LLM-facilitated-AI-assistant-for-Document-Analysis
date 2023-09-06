@@ -12,9 +12,8 @@ class FileProcessor:
     def __init__(self, file):
 
         self.file = file
-        self.preview_text, self.cleaned_docs = self.get_preview_text_and_cleaned_docs(file)
+        self.preview_text, self.cleaned_docs, self.text_length = self.get_preview_text_and_cleaned_docs(file)
         self.text_chunks = self.get_chunks_for_embedding(self.preview_text, self.cleaned_docs)
-        self.text_length = 0
         self.nr_tokens, self.price = self.get_nr_of_tokens_and_price(self.text_chunks)
 
 
@@ -61,8 +60,8 @@ class FileProcessor:
         data = self.save_as_temp_file_and_get_data(file_obj)
         cleaned_docs = self.clean_docs(data)
         full_clean_text = self.get_full_clean_text(cleaned_docs)
-        self.text_length = len(full_clean_text)
-        return full_clean_text, cleaned_docs
+        text_length = len(full_clean_text)
+        return full_clean_text, cleaned_docs, text_length
 
 
     def get_text_chunks(self, full_text, chunk_size=1000, chunk_overlap=200):

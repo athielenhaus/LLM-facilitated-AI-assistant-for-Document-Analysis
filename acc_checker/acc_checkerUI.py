@@ -1,11 +1,17 @@
 import streamlit as st
-from functionsUI import load_json, generate_crit_layout, generate_crit_mgmt_layout
-# from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
+import json
 from text_prep.text_prep import FileProcessor
 from text_prep.embedder import Embedder
 from dotenv import load_dotenv
-from llm.analysis_executor import AnalysisExecutor
-import json
+# from llm.analysis_executor import AnalysisExecutor
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationalRetrievalChain
+from langchain.chat_models import ChatOpenAI
+from docbot.htmlTemplates import css, bot_template, user_template
+from functionsUI import load_json, generate_crit_layout, generate_crit_mgmt_layout
+
+# from docbot.docbot import handle_userinput, get_conversation_chain
+# from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
 
 
 
@@ -19,58 +25,63 @@ def display_results(pdf_doc):
             st.session_state.text_chunks = fp.text_chunks
             st.session_state.nr_tokens = fp.nr_tokens
             st.session_state.price = fp.price
-
-            # st.session_state.cleaned_text = return_clean_pdf_text(pdf_doc)                      # take uploaded PDF, extract and clean text
-            # st.session_state.text_length = len(st.session_state.cleaned_text)                   # obtain text length
-            # st.session_state.text_chunks = get_text_chunks(st.session_state.cleaned_text)       # break into text chunks for embedding
-            # # get number of tokens and price. Note that due to text overlap we use text_chunks variable (not cleaned_text)
-            # st.session_state.nr_tokens, st.session_state.price = get_nr_of_tokens_and_price(st.session_state.text_chunks,
-            #                                                                                 0.0001)
         else:
             pass
+
+
+# get conversation chain
+def get_conversation_chain(vectorstore):
+    load_dotenv()
+    llm = ChatOpenAI(temperature= 0.0)  # initialize LLM model
+
+    # initialize memory class
+    memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
+
+    # create conversation chain using LLM and Memory instances - takes into account chat history as well as docs
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vectorstore.as_retriever(),
+        memory=memory
+    )
+    return conversation_chain
+    
 
 
 # this function is activated by the "Embed as vectors" button on the TextInspectTab
 def execute_embedding(fact_container):
     with st.spinner("Processing"):
-        st.session_state.vector_store = Embedder(st.session_state.text_chunks).vector_store
+        vs = Embedder(st.session_state.text_chunks).vector_store
+        st.session_state.vector_store = vs
+        # st.session_state.vector_store = Embedder(st.session_state.text_chunks).vector_store
+        # create conversation chain
+        st.session_state.conversation = get_conversation_chain(vs)
         fact_container.write("Embedding completed!")
 
 
-# this function is activated by the "Import criteria" button on the AccCheckTab
-def import_criteria_set():
-    # file_path = 'criteria_prompts_draft.json'
-    file_path = 'acc_checker/criteria_prompts_draft.json'
-    criteria_sets = load_json(file_path)
-    st.session_state.criteria_set = criteria_sets['criteria_sets'][0]['criteria']
-    return st.session_state.criteria_set
 
+# communicate with user
+def handle_userinput(user_question):
+    response = st.session_state.conversation({'question': user_question})
+    st.session_state.chat_history = response['chat_history']
 
+    for i, message in enumerate(st.session_state.chat_history):
+        if i % 2 == 0:
+            st.write(user_template.replace(
+                "{{MSG}}", message.content), unsafe_allow_html=True)
+        else:
+            st.write(bot_template.replace(
+                "{{MSG}}", message.content), unsafe_allow_html=True)
+            
 
-# this function is activated by the "Add subcriterion" button on the CritMgmtTab
-def add_subcrit_to_dict(count):
-    # st.session_state.crit_content = [count, subcount, st.session_state[txt_key], st.session_state[prpt_key]]
-    subcrit_list = st.session_state.criteria_set[count]["subcriteria"]
-    empty_subcrit_dict = {"subcriterion_nr": len(subcrit_list)+1, "name":"", "text":"", "prompt":""}
-    subcrit_list.append(empty_subcrit_dict)
-
-
-def run_analysis(container):
-    if st.session_state.criteria_set is not None and st.session_state.vector_store is not None:
-        with container.spinner("Processing"):
-            st.session_state.analyzer = AnalysisExecutor(st.session_state.criteria_set, st.session_state.vector_store)
-            st.session_state.answer_list = st.session_state.analyzer.answer_list
-            st.session_state.analysis_cost = st.session_state.analyzer.cost.total_cost
-    else:
-        container.warning('Please make sure you have imported criteria and embedded the text', icon="⚠️")
 
 def acc_check():
 
     load_dotenv()       # needed for accessing OpenAI APIs
 
     st.set_page_config(layout="wide")
-    st.title("Welcome to AccCheck")
+    st.title("Welcome to AccCheck - Your Accreditation Procedure Assistant")
 
+    # for TextInspect Tab 
     if "crit_content" not in st.session_state:
         st.session_state.crit_content = None
     if "text_length" not in st.session_state:
@@ -87,24 +98,45 @@ def acc_check():
         st.session_state.text_chunks = None
     if "counter" not in st.session_state:
         st.session_state.counter = 0
-    if "criteria_set" not in st.session_state:
-        st.session_state.criteria_set = None
-    if "analyzer" not in st.session_state:
-        st.session_state.analyzer = None
-    if "answer_list" not in st.session_state:
-        st.session_state.answer_list = None
-    if "analysis_cost" not in st.session_state:
-        st.session_state.analysis_cost = 0
 
+    # for AccBot tab
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    if "chat_history" not in st.session_state:
+        st.session_state.conversation = None
+
+    # for AccCheck Tab 
+    # if "criteria_set" not in st.session_state:
+    #     st.session_state.criteria_set = None
+    # if "analyzer" not in st.session_state:
+    #     st.session_state.analyzer = None
+    # if "answer_list" not in st.session_state:
+    #     st.session_state.answer_list = None
+    # if "analysis_cost" not in st.session_state:
+    #     st.session_state.analysis_cost = 0
 
     # markdown test
     # st.markdown('<p class="crit-font">Hello World !!</p>', unsafe_allow_html=True)
 
-    TextInspectTab, AccCheckTab, CritMgmtTab, SessionStateTab, TestTab = st.tabs(["Text Inspection", "AccCheck", "Criteria Manager", "Session State", "Testing"])
+    TextInspectTab, AccBotTab, SessionStateTab = st.tabs(["Text Inspection", "AccBot", "Session State"])
 
 
     with TextInspectTab:
         st.header('Text Inspection')
+
+        '''
+        This assistant can help you analyze your documents.
+        
+        __INSTRUCTIONS:__
+        
+        1) please use the __sidebar on the left__ to upload a PDF file. The imported and formatted text will appear below. 
+        Take a look to make sure that the formatted text looks alright. The number of characters and the estimated cost of 
+        embedding them will appear on the right hand side of the imported text.
+
+        2) If you are satisfied and agree to the the calculated embedding cost (it may vary by a few fractions of a cent), 
+        you can click on the button "Embed text as vectors". Once you see the message below the button that the embedding 
+        has been completed successfully, proceed to the next tab and ask the bot some questions about your document.
+        '''
 
         # create multiple columns
         insp_col1, insp_col2 = st.columns([4, 2])
@@ -144,71 +176,15 @@ def acc_check():
         process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
 
 
-    with AccCheckTab:
-        st.header("Automated document analysis")
-        '''This section allows you to view:  \n- **Accreditation Criteria**  \n- **related text snippets** retrieved from the documents
-        \n- **suggested conclusions**.'''
-        'For each criterion there is an expander. After clicking the "Begin Analysis" button you can click on the expanders to see the results.'
+    with AccBotTab:
+        st.write(css, unsafe_allow_html=True)  # implements imported CSS
+        st.header("Document ChatBot")
+        '''This tab allows you to ask questions about the uploaded document and converse with the Document ChatBot.  
+        In the first step, we search the document for relevant text snippets, then we submit those snippets to ChatGPT along with your question.'''
 
-        acc_check_button_container = st.container()
-        import_crit_button = acc_check_button_container.button("Import criteria", on_click=import_criteria_set)
-
-        acc_check_button = acc_check_button_container.button("**Begin document analysis**", on_click=run_analysis, args=(acc_check_button_container,))
-        st.write("Analysis Cost")
-        analysis_cost_display = st.container().write(st.session_state.analysis_cost)
-
-        if st.session_state.criteria_set is not None:
-            if st.session_state.answer_list is None:
-                for c in st.session_state.criteria_set:
-                        generate_crit_layout(c)
-            else:
-                for c in st.session_state.answer_list:
-                    generate_crit_layout(c)
-        else:
-            pass
-
-
-    with CritMgmtTab:
-
-        if st.session_state.criteria_set is not None:
-            # create expander for each criterion
-            for count, criterion in enumerate(st.session_state.criteria_set):
-                generate_crit_mgmt_layout(criterion, count)
-        else:
-            st.write("Please import criteria using button on previous tab")
-
-
-                # BUTTON FOR ADDING ADDITIONAL CRITERIA --> NICE-TO-HAVE
-                #     # with button_col2:
-                # crit_add_button = crit_expander.button("Add subcriterion",
-                #                                        on_click=add_subcrit_to_dict,
-                #                                        kwargs={"count":count}
-                #                                        )
-
-
-    with TestTab:
-        st.header("Download Section")
-
-        # json should be created once the button has been triggered
-        json_object = json.dumps(st.session_state.criteria_set, indent=4, ensure_ascii=False)
-        file_name = st.text_input("Please insert a file name", "criteria_and_results.json" )
-        st.download_button("Download criteria as JSON", json_object, file_name=file_name)
-
-        # counter_cont = st.container()
-        # counter_cont.write(st.session_state.counter)
-        # add_button = st.button("Add one")
-        # if add_button:
-        #     with st.spinner("Processing"):
-        #         st.session_state.counter += 1
-                # counter_cont.write("point added!")
-                # st.balloons()
-                # st.info("Useful info")
-                # st.warning('This is a warning', icon="⚠️")
-                # st.success('This is a success message!', icon="✅")
-                # e = RuntimeError('This is an exception of type RuntimeError')
-                # st.exception(e)
-                # st.snow()             #awesome!!
-                # st.write("hello")
+        user_question = st.text_input("Ask your documents a question:")
+        if user_question:
+            handle_userinput(user_question)
 
 
     with SessionStateTab:
