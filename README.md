@@ -1,4 +1,4 @@
-# LLM-facilitated AI Assistant for parsing Accreditation Documentation
+# LLM-facilitated AI Assistant for reviewing Accreditation Documentation
 <img src="images/doc_check_screenshot.png" alt="drawing" width="700"/>
 
 ### Overview
