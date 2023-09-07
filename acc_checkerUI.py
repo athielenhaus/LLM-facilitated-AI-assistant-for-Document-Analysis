@@ -85,7 +85,7 @@ def main():
             "Upload a PDF here and click on 'Process'", accept_multiple_files=False)
         process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
 
-    TextInspectTab, AccBotTab, SessionStateTab = st.tabs(["Text Inspection", "DocBot", "Session State"])
+    TextInspectTab, AccBotTab = st.tabs(["Text Inspection", "DocBot"])  # for testing, add SessionStateTab, "Session State"
     
     # for TextInspect Tab 
     if "crit_content" not in st.session_state:
@@ -186,8 +186,6 @@ def main():
 
     # with SessionStateTab:
     #     st.write(st.session_state)
-
-
 
 
 
