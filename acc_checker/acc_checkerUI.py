@@ -55,17 +55,18 @@ def execute_embedding(fact_container):
 
 
 # communicate with user
-def handle_userinput(user_question):
+def handle_userinput(user_question, bot_container):
+
     st.session_state.conversation = get_conversation_chain(st.session_state.vector_store)
     response = st.session_state.conversation({'question': user_question})
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):
         if i % 2 == 0:
-            st.write(user_template.replace(
+            bot_container.write(user_template.replace(
                 "{{MSG}}", message.content), unsafe_allow_html=True)
         else:
-            st.write(bot_template.replace(
+            bot_container.write(bot_template.replace(
                 "{{MSG}}", message.content), unsafe_allow_html=True)
             
 
@@ -77,6 +78,16 @@ def acc_check():
     st.set_page_config(layout="wide")
     st.title("Welcome to AccCheck - Your Accreditation Procedure Assistant")
 
+    
+    st.sidebar.header('PDF Import')
+    with st.sidebar:
+        # st.subheader("Your documents")
+        pdf_doc = st.file_uploader(
+            "Upload a PDF here and click on 'Process'", accept_multiple_files=False)
+        process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
+
+    TextInspectTab, AccBotTab, SessionStateTab = st.tabs(["Text Inspection", "AccBot", "Session State"])
+    
     # for TextInspect Tab 
     if "crit_content" not in st.session_state:
         st.session_state.crit_content = None
@@ -99,7 +110,7 @@ def acc_check():
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
-        st.session_state.conversation = None
+        st.session_state.chat_history = None
 
     # for AccCheck Tab 
     # if "criteria_set" not in st.session_state:
@@ -114,7 +125,7 @@ def acc_check():
     # markdown test
     # st.markdown('<p class="crit-font">Hello World !!</p>', unsafe_allow_html=True)
 
-    TextInspectTab, AccBotTab, SessionStateTab = st.tabs(["Text Inspection", "AccBot", "Session State"])
+    
 
 
     with TextInspectTab:
@@ -129,9 +140,9 @@ def acc_check():
         Take a look to make sure that the formatted text looks alright. The number of characters and the estimated cost of 
         embedding them will appear on the right hand side of the imported text.
 
-        2) If you are satisfied and agree to the the calculated embedding cost (it may vary by a few fractions of a cent), 
-        you can click on the button "Embed text as vectors". Once you see the message below the button that the embedding 
-        has been completed successfully, proceed to the next tab and ask the bot some questions about your document.
+        2) If you are satisfied and the estimated embedding cost is below __0.003__ (may be higher in future app versions), you can 
+        click on the button "Embed text as vectors". Once you see the message below the button that the embedding has been completed 
+        successfully, proceed to the next tab and ask the bot some questions about your document.
         '''
 
         # create multiple columns
@@ -161,30 +172,28 @@ def acc_check():
             price_container.write(st.session_state.price)
 
             # create button to launch embedding - do NOT pass session_state arguments to function --> automatically triggers button whenever session state changes
-            embed_button = fact_container.button("**Embed text as vectors**", on_click=execute_embedding, args=(fact_container,))
-
-
-    st.sidebar.header('PDF Import')
-    with st.sidebar:
-        # st.subheader("Your documents")
-        pdf_doc = st.file_uploader(
-            "Upload a PDF here and click on 'Process'", accept_multiple_files=False)
-        process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
+            if 0 < st.session_state.price < 0.003:
+                embed_button = fact_container.button("**Embed text as vectors**", on_click=execute_embedding, args=(fact_container,))
 
 
     with AccBotTab:
         st.write(css, unsafe_allow_html=True)  # implements imported CSS
+
         st.header("Document ChatBot")
         '''This tab allows you to ask questions about the uploaded document and converse with the Document ChatBot.  
         In the first step, we search the document for relevant text snippets, then we submit those snippets to ChatGPT along with your question.'''
-
-        user_question = st.text_input("Ask your documents a question:")
-        if user_question:
-            handle_userinput(user_question)
+        
+        bot_container = st.container()
+        with bot_container:
+            user_question = st.text_input("Ask your documents a question:")
+            if user_question:
+                handle_userinput(user_question, bot_container)
 
 
     with SessionStateTab:
         st.write(st.session_state)
+
+
 
 
 
