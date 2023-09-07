@@ -99,7 +99,7 @@ def main():
     if "vector_store" not in st.session_state:
         st.session_state.vector_store = None
     if "cleaned_text" not in st.session_state:
-        st.session_state.cleaned_text = 'na'
+        st.session_state.cleaned_text = ''
     if "text_chunks" not in st.session_state:
         st.session_state.text_chunks = None
     if "counter" not in st.session_state:
