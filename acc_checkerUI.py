@@ -75,7 +75,7 @@ def main():
     load_dotenv()       # needed for accessing OpenAI APIs
 
     st.set_page_config(layout="wide")
-    st.title("Welcome to AccCheck - Your Accreditation Procedure Assistant")
+    st.title("Welcome to DocCheck - Your Document Analysis Assistant")
 
     
     st.sidebar.header('PDF Import')
@@ -85,7 +85,7 @@ def main():
             "Upload a PDF here and click on 'Process'", accept_multiple_files=False)
         process_txt_button = st.button("Process", on_click=display_results, args=(pdf_doc,))
 
-    TextInspectTab, AccBotTab, SessionStateTab = st.tabs(["Text Inspection", "AccBot", "Session State"])
+    TextInspectTab, AccBotTab, SessionStateTab = st.tabs(["Text Inspection", "DocBot", "Session State"])
     
     # for TextInspect Tab 
     if "crit_content" not in st.session_state:
@@ -184,8 +184,8 @@ def main():
                 handle_userinput(user_question, bot_container)
 
 
-    with SessionStateTab:
-        st.write(st.session_state)
+    # with SessionStateTab:
+    #     st.write(st.session_state)
 
 
 
