@@ -70,7 +70,7 @@ def handle_userinput(user_question, bot_container):
             
 
 
-def acc_check():
+def main():
 
     load_dotenv()       # needed for accessing OpenAI APIs
 
@@ -192,4 +192,4 @@ def acc_check():
 
 
 if __name__ == '__main__':
-    acc_check()
+    main()
