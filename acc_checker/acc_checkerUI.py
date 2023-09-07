@@ -31,7 +31,6 @@ def display_results(pdf_doc):
 
 # get conversation chain
 def get_conversation_chain(vectorstore):
-    load_dotenv()
     llm = ChatOpenAI(temperature= 0.0)  # initialize LLM model
 
     # initialize memory class
@@ -50,17 +49,14 @@ def get_conversation_chain(vectorstore):
 # this function is activated by the "Embed as vectors" button on the TextInspectTab
 def execute_embedding(fact_container):
     with st.spinner("Processing"):
-        vs = Embedder(st.session_state.text_chunks).vector_store
-        st.session_state.vector_store = vs
-        # st.session_state.vector_store = Embedder(st.session_state.text_chunks).vector_store
-        # create conversation chain
-        st.session_state.conversation = get_conversation_chain(vs)
+        st.session_state.vector_store = Embedder(st.session_state.text_chunks).vector_store
         fact_container.write("Embedding completed!")
 
 
 
 # communicate with user
 def handle_userinput(user_question):
+    st.session_state.conversation = get_conversation_chain(st.session_state.vector_store)
     response = st.session_state.conversation({'question': user_question})
     st.session_state.chat_history = response['chat_history']
 

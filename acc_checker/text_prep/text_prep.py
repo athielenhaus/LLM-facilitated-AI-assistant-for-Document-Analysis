@@ -23,7 +23,8 @@ class FileProcessor:
         data = loader.load()
         return data
 
-
+    
+    # since the uploaded pdf is in object format, we first save it to path and then load it
     def save_as_temp_file_and_get_data(self, file_obj):
         with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_file:
             temp_path = temp_file.name
@@ -32,6 +33,7 @@ class FileProcessor:
             temp_file.write(file_obj.read())
             data = self.load_data(temp_path)
 
+            # clean up
             temp_file.close()
             os.remove(temp_path)
 

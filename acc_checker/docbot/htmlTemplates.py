@@ -25,19 +25,22 @@ css = '''
 }
 '''
 
+
+# old bot pic <img src="https://i.ibb.co/cN0nmSj/Screenshot-2023-05-28-at-02-37-21.png" style="max-height: 78px; max-width: 78px; border-radius: 50%; object-fit: cover;">
 bot_template = '''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://i.ibb.co/cN0nmSj/Screenshot-2023-05-28-at-02-37-21.png" style="max-height: 78px; max-width: 78px; border-radius: 50%; object-fit: cover;">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/20/53/robot-2027195_1280.png" style="max-height: 78px; max-width: 78px; border-radius: 50%; object-fit: cover;">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
 '''
 
+# old user logo <img src="https://i.ibb.co/rdZC7LZ/Photo-logo-1.png">
 user_template = '''
 <div class="chat-message user">
     <div class="avatar">
-        <img src="https://i.ibb.co/rdZC7LZ/Photo-logo-1.png">
+        <img src="https://cdn.pixabay.com/photo/2016/10/18/18/19/question-mark-1750942_1280.png">
     </div>    
     <div class="message">{{MSG}}</div>
 </div>
