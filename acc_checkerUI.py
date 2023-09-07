@@ -1,14 +1,13 @@
 import streamlit as st
-import json
-from text_prep.text_prep import FileProcessor
-from text_prep.embedder import Embedder
+from acc_checker.text_prep.text_prep import FileProcessor
+from acc_checker.text_prep.embedder import Embedder
 from dotenv import load_dotenv
 # from llm.analysis_executor import AnalysisExecutor
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
-from docbot.htmlTemplates import css, bot_template, user_template
-from functionsUI import load_json, generate_crit_layout, generate_crit_mgmt_layout
+from acc_checker.docbot.htmlTemplates import css, bot_template, user_template
+from user_interface.functionsUI import load_json, generate_crit_layout, generate_crit_mgmt_layout
 
 # from docbot.docbot import handle_userinput, get_conversation_chain
 # from text_prep.text_prep_old import return_clean_pdf_text, get_text_chunks, get_nr_of_tokens_and_price
@@ -121,11 +120,6 @@ def acc_check():
     #     st.session_state.answer_list = None
     # if "analysis_cost" not in st.session_state:
     #     st.session_state.analysis_cost = 0
-
-    # markdown test
-    # st.markdown('<p class="crit-font">Hello World !!</p>', unsafe_allow_html=True)
-
-    
 
 
     with TextInspectTab:
