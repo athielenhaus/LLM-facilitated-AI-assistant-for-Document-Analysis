@@ -1,0 +1,9 @@
+# .dockerignore
+.git/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+Embeddings_experimentation.ipynb
+AccCheck_Notebook.ipynb
+*.pyc
+*.pyo

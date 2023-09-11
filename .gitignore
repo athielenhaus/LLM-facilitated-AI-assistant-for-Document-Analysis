@@ -1,0 +1,8 @@
+INSTRUCTIONS_FOR_RUNNING_STREAMLIT.txt
+
+.idea/
+.ipynb_checkpoints/
+venv/
+
+AccCheck_Notebook.ipynb
+Embeddings_experimentation.ipynb
