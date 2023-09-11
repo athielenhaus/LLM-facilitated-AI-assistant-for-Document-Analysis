@@ -7,7 +7,7 @@ __To test the live app:__
 - NOTE: the app may be deactivated during longer periods of inactivity. You can also run the app locally (see below).
 
 
-__Running the App locally:__
+__Running the App locally:__  
 First, fork the repository and / or copy the repo files to a folder on your computer. Then you have two options:
 
 - Option 1: you can run the app by installing the relevant libraries on your system:
