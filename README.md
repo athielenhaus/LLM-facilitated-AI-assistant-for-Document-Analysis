@@ -1,6 +1,9 @@
 # LLM-facilitated AI Assistant for reviewing Accreditation Documentation
 <img src="images/doc_check_screenshot.png" alt="drawing" width="700"/>
 
+(Check it out the live app!!)[https://acc-check.streamlit.app/](https://acc-check.streamlit.app/)
+(Check out the dedicated code repo)[https://github.com/athielenhaus/LLM-facilitated-AI-assistant-for-Document-Analysis/tree/acc_check_prelim]  
+
 ### Overview
 This project uses Streamlit, OpenAI APIs and Langchain to create an online app which allows the user to upload PDF files and ask a Chatbot questions about them.
 
